@@ -6,30 +6,74 @@ function qsa(selector, root = document) {
   return Array.from(root.querySelectorAll(selector));
 }
 
+let toastTimeout = 0;
+
+function hideToast() {
+  const root = qs("#toast");
+  if (!root) return;
+  if (toastTimeout) {
+    window.clearTimeout(toastTimeout);
+    toastTimeout = 0;
+  }
+  root.setAttribute("hidden", "");
+  root.removeAttribute("data-open");
+}
+
 function toast(title, msg) {
   const root = qs("#toast");
   const titleEl = qs("#toastTitle");
   const msgEl = qs("#toastMsg");
-  const close = qs("#toastClose");
-  if (!root || !titleEl || !msgEl || !close) return;
+  if (!root || !titleEl || !msgEl) return;
 
   titleEl.textContent = title;
   msgEl.textContent = msg;
-  root.hidden = false;
+  root.removeAttribute("hidden");
+  root.setAttribute("data-open", "true");
 
-  const timeout = window.setTimeout(() => {
-    root.hidden = true;
-  }, 4600);
-
-  close.onclick = () => {
-    window.clearTimeout(timeout);
-    root.hidden = true;
-  };
+  if (toastTimeout) window.clearTimeout(toastTimeout);
+  toastTimeout = window.setTimeout(() => hideToast(), 4600);
 }
+
+function bindToastClose() {
+  document.addEventListener(
+    "click",
+    (e) => {
+      const btn = e.target.closest("#toastClose");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      hideToast();
+    },
+    true,
+  );
+
+  document.addEventListener(
+    "pointerdown",
+    (e) => {
+      const btn = e.target.closest("#toastClose");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      hideToast();
+    },
+    true,
+  );
+
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key !== "Escape") return;
+      hideToast();
+    },
+    true,
+  );
+}
+
+const THEMES = new Set(["azul", "lilas", "preto", "vermelho"]);
 
 function setTheme(theme) {
   const safe = String(theme || "").trim();
-  if (!safe) return;
+  if (!safe || !THEMES.has(safe)) return;
   document.documentElement.setAttribute("data-theme", safe);
   try {
     window.localStorage.setItem("portfolio-theme", safe);
@@ -158,6 +202,31 @@ function bindCopyEmail() {
   });
 }
 
+function bindProjectFilters() {
+  const section = qs("#projetos");
+  if (!section) return;
+
+  const buttons = qsa(".filter[data-filter]", section);
+  const cards = qsa(".project[data-kind]", section);
+  if (!buttons.length || !cards.length) return;
+
+  const setActive = (value) => {
+    const filter = String(value || "all");
+
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === filter)));
+    cards.forEach((card) => {
+      const kind = card.getAttribute("data-kind");
+      card.hidden = filter !== "all" && kind !== filter;
+    });
+  };
+
+  buttons.forEach((b) => {
+    b.addEventListener("click", () => setActive(b.getAttribute("data-filter")));
+  });
+
+  setActive("all");
+}
+
 function setYear() {
   const year = qs("#year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -168,9 +237,10 @@ function main() {
   bindTheme();
   bindNav();
   bindActiveSection();
+  bindToastClose();
   bindCopyEmail();
+  bindProjectFilters();
   setYear();
 }
 
 document.addEventListener("DOMContentLoaded", main);
-

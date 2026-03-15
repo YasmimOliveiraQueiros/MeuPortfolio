@@ -20,7 +20,7 @@
           <span class="brand__logo" aria-hidden="true"></span>
           <span class="brand__text">
             <span class="brand__title">Seu Nome</span>
-            <span class="brand__sub">Técnica em Informática · Dev Front/Back</span>
+            <span class="brand__sub">Técnica em Informática · Dev Front-end/Back-end</span>
           </span>
         </a>
 
@@ -70,11 +70,9 @@
               <div class="theme__label">Cores</div>
               <div class="theme__swatches" role="list">
                 <button class="swatch" type="button" data-theme="azul" aria-label="Tema azul"></button>
-                <button class="swatch" type="button" data-theme="roxo" aria-label="Tema roxo"></button>
                 <button class="swatch" type="button" data-theme="lilas" aria-label="Tema lilás"></button>
                 <button class="swatch" type="button" data-theme="preto" aria-label="Tema preto"></button>
                 <button class="swatch" type="button" data-theme="vermelho" aria-label="Tema vermelho"></button>
-                <button class="swatch" type="button" data-theme="esmeralda" aria-label="Tema verde esmeralda"></button>
               </div>
             </div>
           </div>
@@ -102,7 +100,7 @@
               </div>
               <div class="facts__item">
                 <dt>Ferramentas</dt>
-                <dd>Git · SQL · LLM · Office</dd>
+                <dd>SQL · PostgreSQL · LLM · Office</dd>
               </div>
             </dl>
 
@@ -150,19 +148,19 @@
           <div class="card">
             <h3 class="card__title">Resumo técnico</h3>
             <ul class="chips" aria-label="Linguagens e conhecimentos">
-              <li class="chip">Java</li>
-              <li class="chip">JavaScript</li>
-              <li class="chip">Python</li>
               <li class="chip">HTML</li>
               <li class="chip">CSS</li>
+              <li class="chip">JavaScript</li>
               <li class="chip">SQL</li>
-              <li class="chip">Git</li>
-              <li class="chip">Pacote Office</li>
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Python</li>
+              <li class="chip">Java</li>
               <li class="chip">LLM</li>
+              <li class="chip">Pacote Office</li>
             </ul>
             <div class="note">
               <span class="note__dot" aria-hidden="true"></span>
-              <span>Atuo tanto na área de front como back end.</span>
+              <span>Atualmente desenvolvo projetos front-end e back-end.</span>
             </div>
           </div>
         </div>
@@ -189,7 +187,7 @@
             <article class="card">
               <h3 class="card__title">Dados</h3>
               <ul class="list">
-                <li class="list__item">Modelagem relacional e consultas SQL</li>
+                <li class="list__item">Modelagem relacional e consultas SQL (PostgreSQL)</li>
                 <li class="list__item">Organização e consistência de dados</li>
                 <li class="list__item">Boas práticas de versionamento</li>
               </ul>
@@ -198,7 +196,7 @@
               <h3 class="card__title">IA & produtividade</h3>
               <ul class="list">
                 <li class="list__item">Uso de LLMs para estudo e prototipação</li>
-                <li class="list__item">Automação de tarefas e documentação</li>
+                <li class="list__item">Automação de tarefas, documentação e pacote Office</li>
                 <li class="list__item">Comunicação clara e foco em resultado</li>
               </ul>
             </article>
@@ -218,14 +216,21 @@
             </div>
           </header>
 
+          <div class="filters" role="group" aria-label="Filtrar projetos">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">Todos</button>
+            <button class="filter" type="button" data-filter="frontend" aria-pressed="false">Front-end</button>
+            <button class="filter" type="button" data-filter="backend" aria-pressed="false">Back-end</button>
+            <button class="filter" type="button" data-filter="fullstack" aria-pressed="false">Full stack</button>
+          </div>
+
           <div class="grid2">
-            <article class="card project">
+            <article class="card project" data-kind="fullstack">
               <div class="project__top">
                 <h3 class="card__title">Projeto 01 · Sistema de cadastro</h3>
                 <div class="tags" aria-label="Tecnologias">
                   <span class="tag">Java</span>
+                  <span class="tag">PostgreSQL</span>
                   <span class="tag">SQL</span>
-                  <span class="tag">Git</span>
                 </div>
               </div>
               <p class="muted">
@@ -238,7 +243,7 @@
               </div>
             </article>
 
-            <article class="card project">
+            <article class="card project" data-kind="frontend">
               <div class="project__top">
                 <h3 class="card__title">Projeto 02 · Site responsivo</h3>
                 <div class="tags" aria-label="Tecnologias">
@@ -256,7 +261,7 @@
               </div>
             </article>
 
-            <article class="card project">
+            <article class="card project" data-kind="backend">
               <div class="project__top">
                 <h3 class="card__title">Projeto 03 · Automação/IA (LLM)</h3>
                 <div class="tags" aria-label="Tecnologias">
@@ -275,13 +280,13 @@
               </div>
             </article>
 
-            <article class="card project">
+            <article class="card project" data-kind="backend">
               <div class="project__top">
                 <h3 class="card__title">Projeto 04 · Banco de dados</h3>
                 <div class="tags" aria-label="Tecnologias">
                   <span class="tag">SQL</span>
+                  <span class="tag">PostgreSQL</span>
                   <span class="tag">Modelagem</span>
-                  <span class="tag">Relacional</span>
                 </div>
               </div>
               <p class="muted">
