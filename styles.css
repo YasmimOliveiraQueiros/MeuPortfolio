@@ -417,8 +417,8 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
 }
 
 .avatar {
-  width: 52px;
-  height: 52px;
+  width: 84px;
+  height: 84px;
   border-radius: 18px;
   position: relative;
   display: grid;
@@ -426,6 +426,7 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   border: 1px solid var(--accent-border);
   background: var(--accent-soft);
   overflow: hidden;
+  flex-shrink: 0;
 }
 .avatar__ring {
   position: absolute;
@@ -434,12 +435,24 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
     radial-gradient(circle at 70% 72%, var(--accent-soft2), transparent 62%);
   filter: blur(2px);
   opacity: 0.9;
+  z-index: 0;
+}
+.avatar__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 .avatar__initials {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-weight: 850;
   letter-spacing: 0.8px;
+}
+.avatar.has-photo .avatar__initials {
+  opacity: 0;
 }
 
 .idcard__meta {
@@ -885,6 +898,10 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   }
   .hero__copy {
     padding: 22px 18px 18px;
+  }
+  .avatar {
+    width: 72px;
+    height: 72px;
   }
   .section {
     padding: 44px 0;

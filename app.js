@@ -227,6 +227,24 @@ function bindProjectFilters() {
   setActive("all");
 }
 
+function bindAvatarPhoto() {
+  const avatar = qs("[data-avatar]");
+  if (!avatar) return;
+
+  const img = qs(".avatar__img", avatar);
+  if (!img) return;
+
+  const mark = () => avatar.classList.add("has-photo");
+  const clear = () => {
+    avatar.classList.remove("has-photo");
+    img.remove();
+  };
+
+  if (img.complete && img.naturalWidth > 0) mark();
+  img.addEventListener("load", mark);
+  img.addEventListener("error", clear);
+}
+
 function setYear() {
   const year = qs("#year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -238,6 +256,7 @@ function main() {
   bindNav();
   bindActiveSection();
   bindToastClose();
+  bindAvatarPhoto();
   bindCopyEmail();
   bindProjectFilters();
   setYear();
