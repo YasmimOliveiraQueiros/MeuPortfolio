@@ -9,6 +9,7 @@ function qsa(selector, root = document) {
 let toastTimeout = 0;
 let lastFocusEl = null;
 let lastOverflow = "";
+let focusTrapRoot = null;
 
 function setPageScrollLocked(locked) {
   const body = document.body;
@@ -83,6 +84,42 @@ function bindToastClose() {
   );
 }
 
+function getFocusableElements(root) {
+  if (!root) return [];
+  const selectors = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex=\"-1\"])",
+  ];
+  return qsa(selectors.join(","), root).filter((el) => el instanceof HTMLElement && !el.hasAttribute("hidden"));
+}
+
+function trapFocus(e) {
+  if (e.key !== "Tab") return;
+  const root = focusTrapRoot;
+  if (!root || root.hasAttribute("hidden")) return;
+
+  const focusables = getFocusableElements(root);
+  if (!focusables.length) return;
+
+  const current = document.activeElement;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+
+  if (e.shiftKey) {
+    if (current === first || !root.contains(current)) {
+      e.preventDefault();
+      last.focus();
+    }
+  } else if (current === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
 function openLightboxFromImg(img) {
   const root = qs("#lightbox");
   const imgEl = qs("#lightboxImg");
@@ -102,6 +139,8 @@ function openLightboxFromImg(img) {
   root.removeAttribute("hidden");
   root.setAttribute("data-open", "true");
   setPageScrollLocked(true);
+  focusTrapRoot = root;
+  document.addEventListener("keydown", trapFocus, true);
 
   closeBtn.focus();
 }
@@ -115,6 +154,8 @@ function closeLightbox() {
   root.setAttribute("hidden", "");
   root.removeAttribute("data-open");
   setPageScrollLocked(false);
+  focusTrapRoot = null;
+  document.removeEventListener("keydown", trapFocus, true);
 
   imgEl.removeAttribute("src");
   imgEl.alt = "";
