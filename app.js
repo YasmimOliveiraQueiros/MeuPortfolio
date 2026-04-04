@@ -123,15 +123,21 @@ function trapFocus(e) {
 function openLightboxFromImg(img) {
   const root = qs("#lightbox");
   const imgEl = qs("#lightboxImg");
+  const frameEl = qs("#lightboxFrame");
   const caption = qs("#lightboxCaption");
   const closeBtn = qs("#lightboxClose");
-  if (!root || !imgEl || !caption || !closeBtn) return;
+  if (!root || !imgEl || !frameEl || !caption || !closeBtn) return;
 
   const src = img.currentSrc || img.getAttribute("src") || "";
   if (!src) return;
 
   lastFocusEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
+  frameEl.setAttribute("hidden", "");
+  frameEl.removeAttribute("src");
+  frameEl.title = "";
+
+  imgEl.removeAttribute("hidden");
   imgEl.src = src;
   imgEl.alt = img.getAttribute("alt") || "Imagem ampliada";
   caption.textContent = img.getAttribute("data-caption") || imgEl.alt || "";
@@ -145,11 +151,44 @@ function openLightboxFromImg(img) {
   closeBtn.focus();
 }
 
+function openLightboxPdf(url, captionText) {
+  const root = qs("#lightbox");
+  const imgEl = qs("#lightboxImg");
+  const frameEl = qs("#lightboxFrame");
+  const caption = qs("#lightboxCaption");
+  const closeBtn = qs("#lightboxClose");
+  if (!root || !imgEl || !frameEl || !caption || !closeBtn) return;
+
+  const src = String(url || "").trim();
+  if (!src) return;
+
+  lastFocusEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+  imgEl.setAttribute("hidden", "");
+  imgEl.removeAttribute("src");
+  imgEl.alt = "";
+
+  frameEl.removeAttribute("hidden");
+  frameEl.src = src;
+  frameEl.title = captionText || "Certificado (PDF)";
+
+  caption.textContent = captionText || "Certificado";
+
+  root.removeAttribute("hidden");
+  root.setAttribute("data-open", "true");
+  setPageScrollLocked(true);
+  focusTrapRoot = root;
+  document.addEventListener("keydown", trapFocus, true);
+
+  closeBtn.focus();
+}
+
 function closeLightbox() {
   const root = qs("#lightbox");
   const imgEl = qs("#lightboxImg");
+  const frameEl = qs("#lightboxFrame");
   const caption = qs("#lightboxCaption");
-  if (!root || !imgEl || !caption) return;
+  if (!root || !imgEl || !frameEl || !caption) return;
 
   root.setAttribute("hidden", "");
   root.removeAttribute("data-open");
@@ -159,6 +198,11 @@ function closeLightbox() {
 
   imgEl.removeAttribute("src");
   imgEl.alt = "";
+  imgEl.setAttribute("hidden", "");
+
+  frameEl.setAttribute("hidden", "");
+  frameEl.removeAttribute("src");
+  frameEl.title = "";
   caption.textContent = "";
 
   if (lastFocusEl) lastFocusEl.focus();
@@ -171,6 +215,13 @@ function bindLightbox() {
     if (close) {
       e.preventDefault();
       closeLightbox();
+      return;
+    }
+
+    const pdfBtn = e.target.closest("[data-lightbox-pdf]");
+    if (pdfBtn) {
+      e.preventDefault();
+      openLightboxPdf(pdfBtn.getAttribute("data-lightbox-pdf"), pdfBtn.getAttribute("data-caption") || "");
       return;
     }
 

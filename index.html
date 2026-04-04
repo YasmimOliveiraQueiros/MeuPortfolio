@@ -295,15 +295,23 @@
                 <span class="badge">Certificado</span>
               </div>
               <p class="muted">Curso com foco em programação em blocos.</p>
-              <a
-                class="linkbtn"
-                href="assets/certificados/certificado-fdr-yasmim.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir certificado Fábrica de Programadores (PDF)"
-              >
-                Abrir certificado
-              </a>
+              <div class="cert__thumbWrap">
+                <object
+                  class="cert__thumb"
+                  data="assets/certificados/certificado-fdr-yasmim.pdf#page=1&zoom=75"
+                  type="application/pdf"
+                  aria-label="Prévia do certificado (PDF)"
+                ></object>
+                <button
+                  class="cert__thumbOverlay"
+                  type="button"
+                  data-lightbox-pdf="assets/certificados/certificado-fdr-yasmim.pdf"
+                  data-caption="UANE · Fábrica de Programadores"
+                  aria-label="Ampliar certificado"
+                >
+                  Ampliar
+                </button>
+              </div>
             </article>
 
             <article class="card cert">
@@ -312,15 +320,23 @@
                 <span class="badge">2026</span>
               </div>
               <p class="muted">Huawei ICT Academy · HCCDA - Tech Essentials Course (computação em nuvem) · Emitido em 21/02/2026</p>
-              <a
-                class="linkbtn"
-                href="assets/certificados/certificado-huawei-hccda-tech-essentials-2026-02-21.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir certificado Huawei ICT Academy (PDF)"
-              >
-                Abrir certificado
-              </a>
+              <div class="cert__thumbWrap">
+                <object
+                  class="cert__thumb"
+                  data="assets/certificados/certificado-huawei-hccda-tech-essentials-2026-02-21.pdf#page=1&zoom=75"
+                  type="application/pdf"
+                  aria-label="Prévia do certificado (PDF)"
+                ></object>
+                <button
+                  class="cert__thumbOverlay"
+                  type="button"
+                  data-lightbox-pdf="assets/certificados/certificado-huawei-hccda-tech-essentials-2026-02-21.pdf"
+                  data-caption="Huawei ICT Academy · HCCDA - Tech Essentials Course"
+                  aria-label="Ampliar certificado"
+                >
+                  Ampliar
+                </button>
+              </div>
             </article>
 
             <article class="card cert">
@@ -329,32 +345,48 @@
                 <span class="badge">PDF</span>
               </div>
               <p class="muted">Certificado de conclusão · Trilha de redes (Huawei)</p>
-              <a
-                class="linkbtn"
-                href="assets/certificados/certificado-huawei-hccda-tech-essentials-redes.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir certificado Huawei (Redes) (PDF)"
-              >
-                Abrir certificado
-              </a>
+              <div class="cert__thumbWrap">
+                <object
+                  class="cert__thumb"
+                  data="assets/certificados/certificado-huawei-hccda-tech-essentials-redes.pdf#page=1&zoom=75"
+                  type="application/pdf"
+                  aria-label="Prévia do certificado (PDF)"
+                ></object>
+                <button
+                  class="cert__thumbOverlay"
+                  type="button"
+                  data-lightbox-pdf="assets/certificados/certificado-huawei-hccda-tech-essentials-redes.pdf"
+                  data-caption="Huawei · HCCDA - Tech Essentials Course (Redes)"
+                  aria-label="Ampliar certificado"
+                >
+                  Ampliar
+                </button>
+              </div>
             </article>
 
             <article class="card cert">
               <div class="cert__top">
                 <h3 class="card__title">CLM · Certificado de Inglês</h3>
-                <span class="badge">2025</span>
+                <span class="badge">2026</span>
               </div>
-              <p class="muted">CLM - Centro de Línguas de Maracanaú · Emitido em 29/01/2025</p>
-              <a
-                class="linkbtn"
-                href="assets/certificados/certificado-clm-ingles-2025-01-29.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir certificado de inglês (CLM) (PDF)"
-              >
-                Abrir certificado
-              </a>
+              <p class="muted">CLM - Centro de Línguas de Maracanaú · Emitido em 17/03/2026</p>
+              <div class="cert__thumbWrap">
+                <object
+                  class="cert__thumb"
+                  data="assets/certificados/certificado-clm-ingles-2026-03-17.pdf#page=1&zoom=75"
+                  type="application/pdf"
+                  aria-label="Prévia do certificado (PDF)"
+                ></object>
+                <button
+                  class="cert__thumbOverlay"
+                  type="button"
+                  data-lightbox-pdf="assets/certificados/certificado-clm-ingles-2026-03-17.pdf"
+                  data-caption="CLM · Certificado de Inglês"
+                  aria-label="Ampliar certificado"
+                >
+                  Ampliar
+                </button>
+              </div>
             </article>
           </div>
         </div>
@@ -422,11 +454,12 @@
       </button>
     </div>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem" hidden>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar certificado" hidden>
       <button class="lightbox__close" type="button" id="lightboxClose" aria-label="Fechar imagem">Fechar</button>
       <div class="lightbox__backdrop" data-lightbox-close aria-hidden="true"></div>
       <figure class="lightbox__panel" role="document" tabindex="-1">
         <img class="lightbox__img" id="lightboxImg" alt="" />
+        <iframe class="lightbox__frame" id="lightboxFrame" title="" hidden></iframe>
         <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
       </figure>
     </div>
