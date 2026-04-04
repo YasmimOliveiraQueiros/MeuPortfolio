@@ -14,7 +14,41 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <div
+      class="intro"
+      id="intro"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Abertura do portfólio"
+      data-state="open"
+    >
+      <div class="intro__bg" aria-hidden="true">
+        <span class="intro__orb intro__orb--a"></span>
+        <span class="intro__orb intro__orb--b"></span>
+        <span class="intro__grid"></span>
+      </div>
+
+      <div class="intro__card">
+        <div class="intro__brand" aria-hidden="true">
+          <span class="intro__ring"></span>
+          <img class="intro__logo" src="assets/logo.png?v=2" alt="" decoding="async" />
+        </div>
+
+        <div class="intro__text">
+          <div class="intro__kicker">Portfólio</div>
+          <div class="intro__title">Yasmim Oliveira Queiros</div>
+          <div class="intro__sub">Técnica em Informática · Dev Front-end/Back-end</div>
+        </div>
+
+        <div class="intro__bar" aria-hidden="true">
+          <span class="intro__barFill"></span>
+        </div>
+
+        <button class="intro__skip" type="button" id="introSkip">Pular</button>
+      </div>
+    </div>
 
     <header class="topbar" aria-label="Barra superior">
       <div class="wrap topbar__inner">
