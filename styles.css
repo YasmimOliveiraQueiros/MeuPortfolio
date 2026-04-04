@@ -559,6 +559,49 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   padding: 22px;
 }
 
+.certcard {
+  padding: 0;
+  overflow: hidden;
+}
+.certcard__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.18));
+}
+.certcard__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  border: 1px solid var(--accent-border);
+  background: radial-gradient(30px 24px at 35% 35%, var(--accent2), var(--accent));
+  box-shadow: 0 16px 40px var(--accent-glow);
+  flex: 0 0 auto;
+}
+.certcard__text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.certcard__title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  letter-spacing: -0.15px;
+}
+.certcard__meta {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.certcard__year {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  font-size: 12px;
+  align-self: flex-end;
+  padding-left: 10px;
+}
+
 .card__title {
   margin: 0 0 12px;
   font-size: 16px;
@@ -823,11 +866,11 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
 
 .cert__thumbWrap {
   position: relative;
-  height: 320px;
-  margin-top: 14px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: transparent;
+  height: 210px;
+  margin-top: 0;
+  border-radius: 18px 18px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
 }
 .cert__thumb {
@@ -851,7 +894,7 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   transition: opacity 160ms ease, transform 160ms ease;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 12px;
   color: var(--text);
   font-weight: 850;
@@ -872,9 +915,17 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
 .cert__thumbWrap:hover .cert__thumbOverlay::before {
   opacity: 0.7;
 }
-.cert__thumbText {
+.certcard__cta {
   position: relative;
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.40);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  font-size: 12.5px;
 }
 .cert__thumbOverlay:focus-visible {
   opacity: 1;
@@ -1204,7 +1255,7 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
     height: 72px;
   }
   .cert__thumbWrap {
-    height: 240px;
+    height: 180px;
   }
   .cert__thumb {
     --pdf-toolbar: 48px;
