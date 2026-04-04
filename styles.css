@@ -235,7 +235,7 @@ a {
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .hero__copy {
@@ -246,6 +246,9 @@ a {
   padding: 28px 26px 24px;
   position: relative;
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__copy::before {
@@ -376,6 +379,7 @@ a {
   gap: 12px;
   padding-top: 10px;
   border-top: 0;
+  margin-top: auto;
 }
 .theme__label {
   font-size: 13px;
@@ -430,6 +434,10 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   padding: 18px;
   position: sticky;
   top: 78px;
+  height: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
 }
 
 .idcard {
@@ -549,6 +557,7 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  margin-top: auto;
 }
 .hero__card .quick .btn {
   width: 100%;
@@ -1399,6 +1408,10 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   .hero__card {
     position: relative;
     top: auto;
+    height: auto;
+  }
+  .hero__copy {
+    height: auto;
   }
   .section__grid {
     grid-template-columns: 1fr;
