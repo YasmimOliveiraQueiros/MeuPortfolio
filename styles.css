@@ -148,6 +148,16 @@ a {
     linear-gradient(180deg, rgba(7, 10, 18, 0.90), rgba(5, 7, 15, 0.96));
   backdrop-filter: blur(10px);
 }
+.intro__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  filter: blur(0.2px) saturate(1.05);
+  pointer-events: none;
+}
 .intro__orb {
   position: absolute;
   width: 460px;
@@ -196,6 +206,18 @@ a {
   transform: translateY(10px) scale(0.985);
   animation: introPop 680ms cubic-bezier(0.2, 0.9, 0.2, 1) 1 both;
 }
+.intro__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background:
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.08)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 4px);
+  mix-blend-mode: overlay;
+  mask-image: radial-gradient(closest-side at 50% 45%, rgba(0, 0, 0, 0.92), transparent 78%);
+}
 .intro__card::before {
   content: "";
   position: absolute;
@@ -235,6 +257,8 @@ a {
   height: 34px;
   display: block;
   filter: drop-shadow(0 18px 30px var(--accent-glow));
+  transform: translateZ(0);
+  animation: introLogo 1200ms cubic-bezier(0.2, 0.9, 0.2, 1) 1 both;
 }
 .intro__kicker {
   font-size: 12px;
@@ -243,18 +267,27 @@ a {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 4px;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: introText 520ms ease 140ms 1 both;
 }
 .intro__title {
   font-weight: 950;
   letter-spacing: -0.4px;
   font-size: clamp(18px, 3vw, 26px);
   line-height: 1.15;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: introText 560ms ease 200ms 1 both;
 }
 .intro__sub {
   margin-top: 4px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: introText 560ms ease 280ms 1 both;
 }
 
 .intro__bar {
@@ -272,7 +305,7 @@ a {
   width: 0%;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   box-shadow: 0 18px 60px var(--accent-glow);
-  animation: introFill 1600ms ease-out 120ms 1 both;
+  animation: introFill 2100ms cubic-bezier(0.2, 0.9, 0.2, 1) 1 both;
 }
 
 .intro__skip {
@@ -313,6 +346,26 @@ a {
 @keyframes introFloat {
   to {
     transform: translateY(18px) translateX(10px);
+  }
+}
+@keyframes introText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes introLogo {
+  0% {
+    opacity: 0;
+    transform: rotate(-18deg) scale(0.92);
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(6deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
   }
 }
 
@@ -1726,6 +1779,9 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
     scroll-behavior: auto !important;
     transition: none !important;
     animation: none !important;
+  }
+  .intro {
+    display: none !important;
   }
   .ticker__track {
     animation: none !important;
