@@ -878,10 +878,13 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
 }
 .cert__thumb {
   --pdf-toolbar: 54px;
+  --pdf-left-cut: 172px;
+  --pdf-right-cut: 32px;
   position: absolute;
   inset: 0;
   top: calc(-1 * var(--pdf-toolbar));
-  width: 100%;
+  left: calc(-1 * var(--pdf-left-cut));
+  width: calc(100% + var(--pdf-left-cut) + var(--pdf-right-cut));
   height: calc(100% + var(--pdf-toolbar));
   border: 0;
   display: block;
@@ -1122,13 +1125,15 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
 }
 .lightbox__frame {
   --pdf-toolbar: 54px;
+  --pdf-left-cut: 172px;
+  --pdf-right-cut: 32px;
   position: absolute;
   inset: 0;
   top: calc(-1 * var(--pdf-toolbar));
+  left: calc(-1 * var(--pdf-left-cut));
   height: calc(100% + var(--pdf-toolbar));
-  width: 100%;
+  width: calc(100% + var(--pdf-left-cut) + var(--pdf-right-cut));
   display: block;
-  width: 100%;
   border: 0;
   background: transparent;
 }
@@ -1231,9 +1236,13 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   }
   .cert__thumb {
     --pdf-toolbar: 48px;
+    --pdf-left-cut: 160px;
+    --pdf-right-cut: 28px;
   }
   .lightbox__frame {
     --pdf-toolbar: 48px;
+    --pdf-left-cut: 160px;
+    --pdf-right-cut: 28px;
   }
   .contactform__grid {
     grid-template-columns: 1fr;
