@@ -740,8 +740,12 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   overflow: hidden;
 }
 .cert__thumb {
+  --pdf-toolbar: 54px;
+  position: absolute;
+  inset: 0;
+  top: calc(-1 * var(--pdf-toolbar));
   width: 100%;
-  height: 100%;
+  height: calc(100% + var(--pdf-toolbar));
   border: 0;
   display: block;
   background: transparent;
@@ -761,14 +765,33 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   color: var(--text);
   font-weight: 850;
   cursor: zoom-in;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+}
+.cert__thumbOverlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.50));
+  opacity: 0;
+  pointer-events: none;
 }
 .cert__thumbWrap:hover .cert__thumbOverlay {
   opacity: 1;
+}
+.cert__thumbWrap:hover .cert__thumbOverlay::before {
+  opacity: 0.7;
+}
+.cert__thumbText {
+  position: relative;
+  z-index: 1;
 }
 .cert__thumbOverlay:focus-visible {
   opacity: 1;
   outline: none;
   box-shadow: var(--ring);
+}
+.cert__thumbOverlay:focus-visible::before {
+  opacity: 0.7;
 }
 
 .badge {
@@ -925,12 +948,24 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   object-fit: contain;
   background: rgba(0, 0, 0, 0.2);
 }
-.lightbox__frame {
-  display: block;
+.lightbox__frameWrap {
+  position: relative;
   width: 100%;
   height: calc(100dvh - 120px);
-  border: 0;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
+}
+.lightbox__frame {
+  --pdf-toolbar: 54px;
+  position: absolute;
+  inset: 0;
+  top: calc(-1 * var(--pdf-toolbar));
+  height: calc(100% + var(--pdf-toolbar));
+  width: 100%;
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
 }
 .lightbox__caption {
   padding: 12px 14px;
@@ -1021,6 +1056,12 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   }
   .cert__thumbWrap {
     height: 240px;
+  }
+  .cert__thumb {
+    --pdf-toolbar: 48px;
+  }
+  .lightbox__frame {
+    --pdf-toolbar: 48px;
   }
   .section {
     padding: 44px 0;
