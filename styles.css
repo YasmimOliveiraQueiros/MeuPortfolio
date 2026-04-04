@@ -375,7 +375,7 @@ a {
   justify-content: space-between;
   gap: 12px;
   padding-top: 10px;
-  border-top: 1px solid var(--topbar-border);
+  border-top: 0;
 }
 .theme__label {
   font-size: 13px;
