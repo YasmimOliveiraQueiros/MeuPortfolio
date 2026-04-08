@@ -1345,6 +1345,16 @@ html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
   overflow: hidden;
   cursor: zoom-in;
 }
+.cert__thumbImg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.18);
+}
+.cert__thumbImg[data-lightbox] {
+  cursor: zoom-in;
+}
 .cert__thumb {
   --pdf-toolbar: 0px;
   --pdf-left-cut: 0px;
