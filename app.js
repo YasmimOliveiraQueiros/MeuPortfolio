@@ -244,6 +244,157 @@ function bindLightbox() {
 }
 
 const THEMES = new Set(["azul", "lilas", "preto", "vermelho"]);
+const LANGS = new Set(["pt", "en"]);
+
+const I18N = {
+  pt: {
+    "meta.title": "Portfólio · Técnica em Informática",
+    "meta.desc": "Portfólio responsivo de técnica em informática: sobre, habilidades, projetos e certificados.",
+    skip: "Pular para o conteúdo",
+    "intro.kicker": "Portfólio",
+    "intro.skip": "Pular",
+    "brand.sub": "Técnica em Informática · Dev Front-end/Back-end",
+    "nav.menu": "Menu",
+    "nav.about": "Sobre",
+    "nav.skills": "Habilidades",
+    "nav.learning": "Em aprendizado",
+    "nav.projects": "Projetos",
+    "nav.certs": "Certificados",
+    "nav.contact": "Contato",
+    "hero.pill1": "Ensino Médio Técnico (3º ano)",
+    "hero.pill2": "Iniciando carreira em TI",
+    "hero.pill3": "Disponível para estágio",
+    "hero.title": "Construo soluções claras, eficientes e com foco em impacto.",
+    "hero.lead":
+      "Interesse em desenvolvimento de software, inteligência artificial e banco de dados — sempre buscando entender o “porquê” por trás das soluções.",
+    "hero.ctaProjects": "Ver projetos",
+    "hero.ctaContact": "Falar comigo",
+    "theme.label": "Cores",
+    "hero.card.ctaCerts": "Ver certificados",
+    "hero.card.copyEmail": "Copiar e-mail",
+    "section.about.title": "Sobre",
+    "section.about.sub": "Quem eu sou e como penso.",
+    "section.stack.title": "Tecnologias",
+    "section.stack.sub": "Ferramentas que uso no dia a dia (passe o mouse para destacar).",
+    "section.skills.title": "Habilidades",
+    "section.skills.sub": "O que eu uso para entregar valor.",
+    "section.learning.title": "Em aprendizado",
+    "section.learning.sub": "O que estou estudando agora e onde quero evoluir.",
+    "section.projects.title": "Projetos",
+    "section.projects.sub": "Seleção para demonstrar prática e evolução.",
+    "section.projects.more": "Quero ver mais",
+    "section.certs.title": "Certificados",
+    "section.certs.sub": "Sessão dedicada apenas a certificados.",
+    "section.contact.title": "Contato",
+    "section.contact.sub": "Vamos conversar sobre oportunidades e projetos.",
+  },
+  en: {
+    "meta.title": "Portfolio · IT Student",
+    "meta.desc": "Responsive portfolio: about, skills, projects and certificates.",
+    skip: "Skip to content",
+    "intro.kicker": "Portfolio",
+    "intro.skip": "Skip",
+    "brand.sub": "IT Student · Front-end/Back-end Dev",
+    "nav.menu": "Menu",
+    "nav.about": "About",
+    "nav.skills": "Skills",
+    "nav.learning": "Learning",
+    "nav.projects": "Projects",
+    "nav.certs": "Certificates",
+    "nav.contact": "Contact",
+    "hero.pill1": "Technical High School (3rd year)",
+    "hero.pill2": "Starting in IT",
+    "hero.pill3": "Open to internships",
+    "hero.title": "I build clear, efficient solutions with impact.",
+    "hero.lead":
+      "Interested in software development, artificial intelligence and databases — always trying to understand the “why” behind each solution.",
+    "hero.ctaProjects": "View projects",
+    "hero.ctaContact": "Contact me",
+    "theme.label": "Colors",
+    "hero.card.ctaCerts": "View certificates",
+    "hero.card.copyEmail": "Copy email",
+    "section.about.title": "About",
+    "section.about.sub": "Who I am and how I think.",
+    "section.stack.title": "Technologies",
+    "section.stack.sub": "Tools I use day to day (hover to highlight).",
+    "section.skills.title": "Skills",
+    "section.skills.sub": "What I use to deliver value.",
+    "section.learning.title": "Learning",
+    "section.learning.sub": "What I’m studying now and where I want to grow.",
+    "section.projects.title": "Projects",
+    "section.projects.sub": "A selection to show hands-on practice and growth.",
+    "section.projects.more": "See more",
+    "section.certs.title": "Certificates",
+    "section.certs.sub": "A section dedicated to certificates.",
+    "section.contact.title": "Contact",
+    "section.contact.sub": "Let’s talk about opportunities and projects.",
+  },
+};
+
+function t(key, lang) {
+  const safeLang = LANGS.has(lang) ? lang : "pt";
+  return (I18N[safeLang] && I18N[safeLang][key]) || (I18N.pt && I18N.pt[key]) || "";
+}
+
+function applyI18n(lang) {
+  const safeLang = LANGS.has(lang) ? lang : "pt";
+  const html = document.documentElement;
+  html.setAttribute("data-lang", safeLang);
+  html.setAttribute("lang", safeLang === "en" ? "en" : "pt-BR");
+
+  qsa("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (!key) return;
+    const value = t(key, safeLang);
+    if (value) el.textContent = value;
+  });
+
+  // Title & meta description
+  const title = t("meta.title", safeLang);
+  if (title) document.title = title;
+  const metaDesc = qs('meta[name="description"]');
+  const desc = t("meta.desc", safeLang);
+  if (metaDesc && desc) metaDesc.setAttribute("content", desc);
+
+  // Update language buttons state
+  qsa(".lang__btn[data-lang]").forEach((btn) => {
+    btn.setAttribute("aria-pressed", String(btn.getAttribute("data-lang") === safeLang));
+  });
+}
+
+function setLang(lang) {
+  const safe = String(lang || "").trim();
+  if (!safe || !LANGS.has(safe)) return;
+  try {
+    window.localStorage.setItem("portfolio-lang", safe);
+  } catch {
+    // ignore
+  }
+  applyI18n(safe);
+}
+
+function restoreLang() {
+  let lang = "";
+  try {
+    lang = String(window.localStorage.getItem("portfolio-lang") || "").trim();
+  } catch {
+    // ignore
+  }
+
+  if (!LANGS.has(lang)) {
+    const nav = String((navigator && navigator.language) || "").toLowerCase();
+    lang = nav.startsWith("en") ? "en" : "pt";
+  }
+  applyI18n(lang);
+}
+
+function bindLang() {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lang__btn[data-lang]");
+    if (!btn) return;
+    setLang(btn.getAttribute("data-lang"));
+  });
+}
 
 function setTheme(theme) {
   const safe = String(theme || "").trim();
@@ -712,8 +863,10 @@ function setYear() {
 
 function main() {
   restoreTheme();
+  restoreLang();
   runIntro();
   bindTheme();
+  bindLang();
   bindNav();
   bindActiveSection();
   bindToastClose();
