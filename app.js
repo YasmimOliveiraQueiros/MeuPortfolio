@@ -383,6 +383,11 @@ function bindProjectFilters() {
   const buttons = qsa(".filter[data-filter]", section);
   const cards = qsa(".project[data-kind]", section);
   if (!buttons.length || !cards.length) return;
+  if (buttons.length < 2) {
+    const wrap = qs(".filters", section);
+    if (wrap) wrap.setAttribute("hidden", "");
+    return;
+  }
 
   const setActive = (value) => {
     const filter = String(value || "all");
