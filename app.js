@@ -253,7 +253,13 @@ const I18N = {
     skip: "Pular para o conteúdo",
     "intro.kicker": "Portfólio",
     "intro.skip": "Pular",
+    "intro.aria": "Abertura do portfólio",
     "brand.sub": "Técnica em Informática · Dev Front-end/Back-end",
+    "idcard.role": "Técnica em Informática",
+    "topbar.aria": "Barra superior",
+    "brand.aria": "Ir para o início",
+    "nav.aria": "Navegação principal",
+    "hero.aria": "Apresentação",
     "nav.menu": "Menu",
     "nav.about": "Sobre",
     "nav.skills": "Habilidades",
@@ -270,13 +276,27 @@ const I18N = {
     "hero.ctaProjects": "Ver projetos",
     "hero.ctaContact": "Falar comigo",
     "theme.label": "Cores",
+    "theme.aria": "Opções de cores e idioma",
+    "theme.palette.aria": "Paleta de cores",
+    "theme.swatch.blue": "Tema azul",
+    "theme.swatch.purple": "Tema lilás",
+    "theme.swatch.black": "Tema preto",
+    "theme.swatch.red": "Tema vermelho",
+    "lang.aria": "Idioma",
     "hero.card.ctaCerts": "Ver certificados",
     "hero.card.copyEmail": "Copiar e-mail",
+    "hero.card.aria": "Resumo rápido",
+    "hero.facts.aria": "Destaques",
+    "profile.alt": "Foto de Yasmim Oliveira Queiros",
     "hero.card.role": "Atuação",
     "hero.card.roleValue": "Front-end e Back-end",
     "hero.card.focus": "Foco",
     "hero.card.focusValue": "Software · IA · Dados",
     "about.title": "Quem sou eu",
+    "about.section.aria": "Sobre mim",
+    "about.card.aria": "Quem sou eu",
+    "about.kv.aria": "Informações rápidas",
+    "about.stats.aria": "Destaques rápidos",
     "about.kv.name": "Nome",
     "about.kv.course": "Curso",
     "about.kv.courseValue": "Ensino Médio Técnico em Informática",
@@ -303,8 +323,11 @@ const I18N = {
     "section.about.sub": "Quem eu sou e como penso.",
     "section.stack.title": "Tecnologias",
     "section.stack.sub": "Ferramentas que uso no dia a dia (passe o mouse para destacar).",
+    "stack.section.aria": "Tecnologias e ferramentas",
+    "stack.ticker.aria": "Tecnologias e ferramentas em destaque",
     "section.skills.title": "Habilidades",
     "section.skills.sub": "O que eu uso para entregar valor.",
+    "skills.section.aria": "Habilidades",
     "skills.dev.title": "Desenvolvimento",
     "skills.dev.i1": "Estruturas de dados e lógica de programação",
     "skills.dev.i2": "Criação de APIs e integração front/back",
@@ -319,6 +342,7 @@ const I18N = {
     "skills.ai.i3": "Comunicação clara e foco em resultado",
     "section.learning.title": "Em aprendizado",
     "section.learning.sub": "O que estou estudando agora e onde quero evoluir.",
+    "learning.section.aria": "Em aprendizado",
     "learning.title": "Metas e evolução",
     "learning.lead": "Planejamento por etapas: o que ainda vou iniciar, o que já está em andamento e o que já concluí.",
     "learning.future.title": "Futuras",
@@ -343,30 +367,68 @@ const I18N = {
     "section.projects.title": "Projetos",
     "section.projects.sub": "Seleção para demonstrar prática e evolução.",
     "section.projects.more": "Quero ver mais",
+    "projects.section.aria": "Projetos",
+    "projects.filters.aria": "Filtrar projetos",
+    "projects.tags.aria": "Tecnologias",
     "projects.filter.all": "Todos",
     "projects.repo": "Repositório",
     "projects.web": "Ver na web",
+    "projects.p1.repoAria": "Abrir repositório PaginaLogin no GitHub",
+    "projects.p1.webAria": "Abrir PaginaLogin na web",
     "projects.p1.title": "PaginaLogin · Login e cadastro",
     "projects.p1.desc": "Página de login e cadastro, com foco em interface clara e organização do front-end.",
+    "projects.p2.repoAria": "Abrir repositório deste portfólio no GitHub",
     "projects.p2.title": "Meu Portfólio",
     "projects.p2.desc":
       "Meu portfólio pessoal: layout responsivo, sessões bem organizadas (sobre, projetos e certificados), temas de cor e interações com JavaScript.",
     "section.certs.title": "Certificados",
     "section.certs.sub": "Sessão dedicada apenas a certificados.",
+    "certs.section.aria": "Certificados",
+    "aria.year": "Ano",
     "certs.uane.title": "Fábrica de Programadores",
     "certs.uane.meta": "UANE · Programação em blocos",
+    "certs.uane.alt": "Certificado: UANE · Fábrica de Programadores",
+    "certs.uane.caption": "UANE · Fábrica de Programadores",
     "certs.huaweiCloud.title": "HCCDA - Tech Essentials (Cloud)",
     "certs.huaweiCloud.meta": "Huawei ICT Academy · 21/02/2026",
+    "certs.huaweiCloud.alt": "Certificado: Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)",
+    "certs.huaweiCloud.caption": "Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)",
     "certs.huaweiNetworks.title": "HCCDA - Tech Essentials (Redes)",
     "certs.huaweiNetworks.meta": "Huawei · Certificado de redes",
+    "certs.huaweiNetworks.alt": "Certificado: Huawei · Redes de computadores",
+    "certs.huaweiNetworks.caption": "Huawei · Redes de computadores",
+    "certs.aluraIa.title": "Imersão Front-end com IA",
+    "certs.aluraIa.meta": "Alura · 08/04/2026",
+    "certs.aluraIa.alt": "Certificado: Alura · Imersão Front-end com IA",
+    "certs.aluraIa.caption": "Alura · Imersão Front-end com IA",
     "certs.clm.title": "Certificado de Inglês",
     "certs.clm.meta": "CLM · 17/03/2026",
+    "certs.clm.alt": "Certificado: CLM · Inglês",
+    "certs.clm.caption": "CLM · Certificado de Inglês",
     "section.contact.title": "Contato",
     "section.contact.sub": "Vamos conversar sobre oportunidades e projetos.",
+    "contact.section.aria": "Contato",
     "footer.top": "Voltar ao topo",
+    "footer.aria": "Rodapé",
     "toast.ok": "Tudo certo",
     "toast.close": "Fechar",
     "toast.closeAria": "Fechar",
+    "toast.copy.ok.title": "Copiado",
+    "toast.copy.ok.msg": "E-mail copiado para a área de transferência.",
+    "toast.copy.fail.title": "Não copiado",
+    "toast.copy.fail.msg": "Não foi possível copiar.",
+    "toast.copy.error.title": "Erro",
+    "toast.copy.error.msg": "Não foi possível copiar o e-mail.",
+    "toast.form.name.title": "Faltou o nome",
+    "toast.form.name.msg": "Digite seu nome para enviar a mensagem.",
+    "toast.form.email.title": "E-mail inválido",
+    "toast.form.email.msg": "Digite um e-mail válido para receber a cópia.",
+    "toast.form.subject.title": "Faltou o assunto",
+    "toast.form.subject.msg": "Digite um assunto para a mensagem.",
+    "toast.form.message.title": "Faltou a mensagem",
+    "toast.form.message.msg": "Escreva sua mensagem antes de enviar.",
+    "toast.gmail.title": "Abrindo Gmail",
+    "toast.gmail.msg": "Finalize o envio no Gmail. A mensagem vai para mim e com cópia para você.",
     "lightbox.aria": "Visualizar imagem",
     "lightbox.close": "Fechar",
     "lightbox.closeAria": "Fechar imagem",
@@ -391,7 +453,13 @@ const I18N = {
     skip: "Skip to content",
     "intro.kicker": "Portfolio",
     "intro.skip": "Skip",
+    "intro.aria": "Portfolio intro",
     "brand.sub": "IT Student · Front-end/Back-end Dev",
+    "idcard.role": "IT Student",
+    "topbar.aria": "Top bar",
+    "brand.aria": "Go to home",
+    "nav.aria": "Main navigation",
+    "hero.aria": "Hero",
     "nav.menu": "Menu",
     "nav.about": "About",
     "nav.skills": "Skills",
@@ -408,13 +476,27 @@ const I18N = {
     "hero.ctaProjects": "View projects",
     "hero.ctaContact": "Contact me",
     "theme.label": "Colors",
+    "theme.aria": "Color and language options",
+    "theme.palette.aria": "Color palette",
+    "theme.swatch.blue": "Blue theme",
+    "theme.swatch.purple": "Purple theme",
+    "theme.swatch.black": "Black theme",
+    "theme.swatch.red": "Red theme",
+    "lang.aria": "Language",
     "hero.card.ctaCerts": "View certificates",
     "hero.card.copyEmail": "Copy email",
+    "hero.card.aria": "Quick summary",
+    "hero.facts.aria": "Highlights",
+    "profile.alt": "Photo of Yasmim Oliveira Queiros",
     "hero.card.role": "Role",
     "hero.card.roleValue": "Front-end & Back-end",
     "hero.card.focus": "Focus",
     "hero.card.focusValue": "Software · AI · Data",
     "about.title": "About me",
+    "about.section.aria": "About me",
+    "about.card.aria": "About me",
+    "about.kv.aria": "Quick info",
+    "about.stats.aria": "Quick highlights",
     "about.kv.name": "Name",
     "about.kv.course": "Course",
     "about.kv.courseValue": "Technical High School (IT)",
@@ -441,8 +523,11 @@ const I18N = {
     "section.about.sub": "Who I am and how I think.",
     "section.stack.title": "Technologies",
     "section.stack.sub": "Tools I use day to day (hover to highlight).",
+    "stack.section.aria": "Technologies and tools",
+    "stack.ticker.aria": "Featured technologies and tools",
     "section.skills.title": "Skills",
     "section.skills.sub": "What I use to deliver value.",
+    "skills.section.aria": "Skills",
     "skills.dev.title": "Development",
     "skills.dev.i1": "Data structures and programming logic",
     "skills.dev.i2": "API building and front/back integration",
@@ -457,6 +542,7 @@ const I18N = {
     "skills.ai.i3": "Clear communication and outcome focus",
     "section.learning.title": "Learning",
     "section.learning.sub": "What I’m studying now and where I want to grow.",
+    "learning.section.aria": "Learning",
     "learning.title": "Goals & growth",
     "learning.lead": "A simple roadmap: what I’ll start later, what’s in progress, and what’s already completed.",
     "learning.future.title": "Future",
@@ -481,30 +567,68 @@ const I18N = {
     "section.projects.title": "Projects",
     "section.projects.sub": "A selection to show hands-on practice and growth.",
     "section.projects.more": "See more",
+    "projects.section.aria": "Projects",
+    "projects.filters.aria": "Filter projects",
+    "projects.tags.aria": "Technologies",
     "projects.filter.all": "All",
     "projects.repo": "Repository",
-    "projects.web": "Live",
+    "projects.web": "View on web",
+    "projects.p1.repoAria": "Open PaginaLogin repository on GitHub",
+    "projects.p1.webAria": "Open PaginaLogin on the web",
     "projects.p1.title": "PaginaLogin · Login & sign-up",
     "projects.p1.desc": "Login and sign-up page focused on a clear interface and front-end organization.",
+    "projects.p2.repoAria": "Open this portfolio repository on GitHub",
     "projects.p2.title": "My Portfolio",
     "projects.p2.desc":
       "My personal portfolio: responsive layout, well-organized sections (about, projects and certificates), color themes, and JavaScript interactions.",
     "section.certs.title": "Certificates",
     "section.certs.sub": "A section dedicated to certificates.",
+    "certs.section.aria": "Certificates",
+    "aria.year": "Year",
     "certs.uane.title": "Programmers Factory",
     "certs.uane.meta": "UANE · Block-based programming",
+    "certs.uane.alt": "Certificate: UANE · Programmers Factory",
+    "certs.uane.caption": "UANE · Programmers Factory",
     "certs.huaweiCloud.title": "HCCDA - Tech Essentials (Cloud)",
     "certs.huaweiCloud.meta": "Huawei ICT Academy · 2026-02-21",
+    "certs.huaweiCloud.alt": "Certificate: Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)",
+    "certs.huaweiCloud.caption": "Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)",
     "certs.huaweiNetworks.title": "HCCDA - Tech Essentials (Networks)",
     "certs.huaweiNetworks.meta": "Huawei · Networking certificate",
+    "certs.huaweiNetworks.alt": "Certificate: Huawei · Computer networks",
+    "certs.huaweiNetworks.caption": "Huawei · Computer networks",
+    "certs.aluraIa.title": "Front-end Immersion with AI",
+    "certs.aluraIa.meta": "Alura · 2026-04-08",
+    "certs.aluraIa.alt": "Certificate: Alura · Front-end Immersion with AI",
+    "certs.aluraIa.caption": "Alura · Front-end Immersion with AI",
     "certs.clm.title": "English Certificate",
     "certs.clm.meta": "CLM · 2026-03-17",
+    "certs.clm.alt": "Certificate: CLM · English",
+    "certs.clm.caption": "CLM · English certificate",
     "section.contact.title": "Contact",
     "section.contact.sub": "Let’s talk about opportunities and projects.",
+    "contact.section.aria": "Contact",
     "footer.top": "Back to top",
+    "footer.aria": "Footer",
     "toast.ok": "All set",
     "toast.close": "Close",
     "toast.closeAria": "Close",
+    "toast.copy.ok.title": "Copied",
+    "toast.copy.ok.msg": "Email copied to the clipboard.",
+    "toast.copy.fail.title": "Not copied",
+    "toast.copy.fail.msg": "Couldn’t copy.",
+    "toast.copy.error.title": "Error",
+    "toast.copy.error.msg": "Couldn’t copy the email.",
+    "toast.form.name.title": "Name required",
+    "toast.form.name.msg": "Type your name to send the message.",
+    "toast.form.email.title": "Invalid email",
+    "toast.form.email.msg": "Type a valid email to receive a copy.",
+    "toast.form.subject.title": "Subject required",
+    "toast.form.subject.msg": "Type a subject for the message.",
+    "toast.form.message.title": "Message required",
+    "toast.form.message.msg": "Write a message before sending.",
+    "toast.gmail.title": "Opening Gmail",
+    "toast.gmail.msg": "Finish sending in Gmail. It will go to me and be CC’d to you.",
     "lightbox.aria": "View image",
     "lightbox.close": "Close",
     "lightbox.closeAria": "Close image",
@@ -567,6 +691,20 @@ function applyI18n(lang) {
     if (!key) return;
     const value = t(key, safeLang);
     if (value) el.setAttribute("aria-label", value);
+  });
+
+  qsa("[data-i18n-alt]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-alt");
+    if (!key) return;
+    const value = t(key, safeLang);
+    if (value) el.setAttribute("alt", value);
+  });
+
+  qsa("[data-i18n-caption]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-caption");
+    if (!key) return;
+    const value = t(key, safeLang);
+    if (value) el.setAttribute("data-caption", value);
   });
 
   // Title & meta description
@@ -740,9 +878,10 @@ function bindCopyEmail() {
     const email = btn.getAttribute("data-email");
     try {
       const ok = await copyToClipboard(email);
-      toast(ok ? "Copiado" : "Não copiado", ok ? "E-mail copiado para a área de transferência." : "Não foi possível copiar.");
+      if (ok) toastI18n("toast.copy.ok.title", "toast.copy.ok.msg");
+      else toastI18n("toast.copy.fail.title", "toast.copy.fail.msg");
     } catch {
-      toast("Erro", "Não foi possível copiar o e-mail.");
+      toastI18n("toast.copy.error.title", "toast.copy.error.msg");
     }
   });
 }
@@ -1046,22 +1185,22 @@ function bindContactForm() {
     const message = String(messageEl.value || "").trim();
 
     if (!name) {
-      toast("Faltou o nome", "Digite seu nome para enviar a mensagem.");
+      toastI18n("toast.form.name.title", "toast.form.name.msg");
       nameEl.focus();
       return;
     }
     if (!email || !email.includes("@")) {
-      toast("E-mail inválido", "Digite um e-mail válido para receber a cópia.");
+      toastI18n("toast.form.email.title", "toast.form.email.msg");
       emailEl.focus();
       return;
     }
     if (!subject) {
-      toast("Faltou o assunto", "Digite um assunto para a mensagem.");
+      toastI18n("toast.form.subject.title", "toast.form.subject.msg");
       subjectEl.focus();
       return;
     }
     if (!message) {
-      toast("Faltou a mensagem", "Escreva sua mensagem antes de enviar.");
+      toastI18n("toast.form.message.title", "toast.form.message.msg");
       messageEl.focus();
       return;
     }
@@ -1072,7 +1211,7 @@ function bindContactForm() {
     const url = buildGmailComposeUrl({ to, cc: email, subject, body });
     const opened = window.open(url, "_blank", "noopener");
     if (!opened) window.location.assign(url);
-    toast("Abrindo Gmail", "Finalize o envio no Gmail. A mensagem vai para mim e com cópia para você.");
+    toastI18n("toast.gmail.title", "toast.gmail.msg");
   });
 }
 
@@ -1081,9 +1220,17 @@ function setYear() {
   if (year) year.textContent = String(new Date().getFullYear());
 }
 
+function updateCertCount() {
+  const count = qsa("#certificados .certcard").length;
+  qsa('[data-count="certs"]').forEach((el) => {
+    el.textContent = String(count);
+  });
+}
+
 function main() {
   restoreTheme();
   restoreLang();
+  updateCertCount();
   runIntro();
   bindTheme();
   bindLang();
