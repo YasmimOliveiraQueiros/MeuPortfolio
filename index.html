@@ -22,6 +22,7 @@
       role="dialog"
       aria-modal="true"
       aria-label="Abertura do portfólio"
+      data-i18n-aria="intro.aria"
       data-state="idle"
     >
       <div class="intro__bg" aria-hidden="true">
@@ -51,9 +52,9 @@
       </div>
     </div>
 
-    <header class="topbar" aria-label="Barra superior">
+    <header class="topbar" aria-label="Barra superior" data-i18n-aria="topbar.aria">
       <div class="wrap topbar__inner">
-        <a class="brand" href="#home" aria-label="Ir para o início">
+        <a class="brand" href="#home" aria-label="Ir para o início" data-i18n-aria="brand.aria">
           <span class="brand__logo" aria-hidden="true"></span>
           <span class="brand__text">
             <span class="brand__title">Yasmim Oliveira Queiros</span>
@@ -61,7 +62,7 @@
           </span>
         </a>
 
-        <nav class="nav" aria-label="Navegação principal">
+        <nav class="nav" aria-label="Navegação principal" data-i18n-aria="nav.aria">
           <button
             class="nav__toggle"
             type="button"
@@ -84,7 +85,7 @@
     </header>
 
     <main id="conteudo">
-      <section class="hero" id="home" aria-label="Apresentação">
+      <section class="hero" id="home" aria-label="Apresentação" data-i18n-aria="hero.aria">
         <div class="wrap hero__grid">
           <div class="hero__copy">
             <div class="kicker">
@@ -104,16 +105,16 @@
               <a class="btn btn--ghost" href="#contato" data-i18n="hero.ctaContact">Falar comigo</a>
             </div>
 
-            <div class="theme" aria-label="Opções de cores e idioma">
+            <div class="theme" aria-label="Opções de cores e idioma" data-i18n-aria="theme.aria">
               <div class="theme__label" data-i18n="theme.label">Cores</div>
               <div class="theme__controls">
-                <div class="theme__swatches" role="list" aria-label="Paleta de cores">
-                  <button class="swatch" type="button" data-theme="azul" aria-label="Tema azul"></button>
-                  <button class="swatch" type="button" data-theme="lilas" aria-label="Tema lilás"></button>
-                  <button class="swatch" type="button" data-theme="preto" aria-label="Tema preto"></button>
-                  <button class="swatch" type="button" data-theme="vermelho" aria-label="Tema vermelho"></button>
+                <div class="theme__swatches" role="list" aria-label="Paleta de cores" data-i18n-aria="theme.palette.aria">
+                  <button class="swatch" type="button" data-theme="azul" aria-label="Tema azul" data-i18n-aria="theme.swatch.blue"></button>
+                  <button class="swatch" type="button" data-theme="lilas" aria-label="Tema lilás" data-i18n-aria="theme.swatch.purple"></button>
+                  <button class="swatch" type="button" data-theme="preto" aria-label="Tema preto" data-i18n-aria="theme.swatch.black"></button>
+                  <button class="swatch" type="button" data-theme="vermelho" aria-label="Tema vermelho" data-i18n-aria="theme.swatch.red"></button>
                 </div>
-                <div class="lang" role="group" aria-label="Idioma">
+                <div class="lang" role="group" aria-label="Idioma" data-i18n-aria="lang.aria">
                   <button class="lang__btn" type="button" data-lang="pt" aria-pressed="true">BR</button>
                   <button class="lang__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
                 </div>
@@ -121,7 +122,7 @@
             </div>
           </div>
 
-          <aside class="hero__card" aria-label="Resumo rápido">
+          <aside class="hero__card" aria-label="Resumo rápido" data-i18n-aria="hero.card.aria">
             <div class="idcard">
               <div class="avatar" data-avatar>
                 <span class="avatar__ring"></span>
@@ -129,6 +130,7 @@
                   class="avatar__img"
                   src="assets/foto-perfil.png"
                   alt="Foto de Yasmim Oliveira Queiros"
+                  data-i18n-alt="profile.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
@@ -138,11 +140,11 @@
               </div>
               <div class="idcard__meta">
                 <div class="idcard__name">Yasmim Oliveira Queiros</div>
-                <div class="idcard__role">Técnica em Informática</div>
+                <div class="idcard__role" data-i18n="idcard.role">Técnica em Informática</div>
               </div>
             </div>
 
-            <dl class="facts" aria-label="Destaques">
+            <dl class="facts" aria-label="Destaques" data-i18n-aria="hero.facts.aria">
               <div class="facts__item">
                 <dt data-i18n="hero.card.role">Atuação</dt>
                 <dd data-i18n="hero.card.roleValue">Front-end e Back-end</dd>
@@ -168,17 +170,17 @@
         </div>
       </section>
 
-      <section class="section" id="sobre" aria-label="Sobre mim">
+      <section class="section" id="sobre" aria-label="Sobre mim" data-i18n-aria="about.section.aria">
         <div class="wrap">
           <header class="section__head">
             <h2 class="section__title" data-i18n="section.about.title">Sobre</h2>
             <p class="section__subtitle" data-i18n="section.about.sub">Quem eu sou e como penso.</p>
           </header>
 
-          <article class="card aboutcard" aria-label="Quem sou eu">
+          <article class="card aboutcard" aria-label="Quem sou eu" data-i18n-aria="about.card.aria">
             <h3 class="aboutcard__title" data-i18n="about.title">Quem sou eu</h3>
 
-            <dl class="aboutkv" aria-label="Informações rápidas">
+            <dl class="aboutkv" aria-label="Informações rápidas" data-i18n-aria="about.kv.aria">
               <div class="aboutkv__row">
                 <dt data-i18n="about.kv.name">Nome</dt>
                 <dd>Yasmim Oliveira Queiros</dd>
@@ -225,7 +227,7 @@
             </div>
           </article>
 
-          <div class="aboutstats" aria-label="Destaques rápidos">
+          <div class="aboutstats" aria-label="Destaques rápidos" data-i18n-aria="about.stats.aria">
             <div class="card stat">
               <div class="stat__num">3º</div>
               <div class="stat__label" data-i18n="about.stats.year">Ano do técnico</div>
@@ -235,7 +237,7 @@
               <div class="stat__label" data-i18n="about.stats.projects">Projetos em destaque</div>
             </div>
             <div class="card stat">
-              <div class="stat__num">4</div>
+              <div class="stat__num" data-count="certs">4</div>
               <div class="stat__label" data-i18n="about.stats.certs">Certificados</div>
             </div>
             <div class="card stat">
@@ -246,7 +248,7 @@
         </div>
       </section>
 
-      <section class="section" id="stack" aria-label="Tecnologias e ferramentas">
+      <section class="section" id="stack" aria-label="Tecnologias e ferramentas" data-i18n-aria="stack.section.aria">
         <div class="wrap">
           <header class="section__head section__head--inline">
             <div>
@@ -255,7 +257,7 @@
             </div>
           </header>
 
-          <div class="ticker" role="group" aria-label="Tecnologias e ferramentas em destaque">
+          <div class="ticker" role="group" aria-label="Tecnologias e ferramentas em destaque" data-i18n-aria="stack.ticker.aria">
             <div class="ticker__track" aria-hidden="true">
               <div class="ticker__row">
                 <button class="ticker__item" type="button" aria-label="HTML">
@@ -347,7 +349,7 @@
         </div>
       </section>
 
-      <section class="section" id="habilidades" aria-label="Habilidades">
+      <section class="section" id="habilidades" aria-label="Habilidades" data-i18n-aria="skills.section.aria">
         <div class="wrap">
           <header class="section__head section__head--inline">
             <div>
@@ -385,7 +387,7 @@
         </div>
       </section>
 
-      <section class="section" id="aprendizado" aria-label="Em aprendizado">
+      <section class="section" id="aprendizado" aria-label="Em aprendizado" data-i18n-aria="learning.section.aria">
         <div class="wrap">
           <header class="section__head section__head--inline">
             <div>
@@ -398,7 +400,7 @@
             <article class="card learncard">
               <div class="learn__head">
                 <h3 class="card__title" data-i18n="learning.title">Metas e evolução</h3>
-                <span class="badge" aria-label="Ano">2026</span>
+                <span class="badge" aria-label="Ano" data-i18n-aria="aria.year">2026</span>
               </div>
               <p class="muted" data-i18n="learning.lead">Planejamento por etapas: o que ainda vou iniciar, o que já está em andamento e o que já concluí.</p>
 
@@ -539,7 +541,7 @@
         </div>
       </section>
 
-      <section class="section" id="projetos" aria-label="Projetos">
+      <section class="section" id="projetos" aria-label="Projetos" data-i18n-aria="projects.section.aria">
         <div class="wrap">
           <header class="section__head section__head--inline">
             <div>
@@ -551,7 +553,7 @@
             </div>
           </header>
 
-          <div class="filters" role="group" aria-label="Filtrar projetos">
+          <div class="filters" role="group" aria-label="Filtrar projetos" data-i18n-aria="projects.filters.aria">
             <button class="filter" type="button" data-filter="all" aria-pressed="true" data-i18n="projects.filter.all">Todos</button>
           </div>
 
@@ -559,7 +561,7 @@
             <article class="card project" data-kind="frontend">
               <div class="project__top">
                 <h3 class="card__title" data-i18n="projects.p1.title">PaginaLogin · Login e cadastro</h3>
-                <div class="tags" aria-label="Tecnologias">
+                <div class="tags" aria-label="Tecnologias" data-i18n-aria="projects.tags.aria">
                   <span class="tag">HTML</span>
                   <span class="tag">CSS</span>
                   <span class="tag">JavaScript</span>
@@ -569,15 +571,15 @@
                 Página de login e cadastro, com foco em interface clara e organização do front-end.
               </p>
               <div class="project__links">
-                <a class="linkbtn" href="https://github.com/YasmimOliveiraQueiros/PaginaLogin" aria-label="Abrir repositório PaginaLogin no GitHub" data-i18n="projects.repo">Repositório</a>
-                <a class="linkbtn" href="https://pagina-login-umber.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Abrir PaginaLogin na web" data-i18n="projects.web">Ver na web</a>
+                <a class="linkbtn" href="https://github.com/YasmimOliveiraQueiros/PaginaLogin" aria-label="Abrir repositório PaginaLogin no GitHub" data-i18n="projects.repo" data-i18n-aria="projects.p1.repoAria">Repositório</a>
+                <a class="linkbtn" href="https://pagina-login-umber.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Abrir PaginaLogin na web" data-i18n="projects.web" data-i18n-aria="projects.p1.webAria">Ver na web</a>
               </div>
             </article>
 
             <article class="card project" data-kind="frontend">
               <div class="project__top">
                 <h3 class="card__title" data-i18n="projects.p2.title">Meu Portfólio</h3>
-                <div class="tags" aria-label="Tecnologias">
+                <div class="tags" aria-label="Tecnologias" data-i18n-aria="projects.tags.aria">
                   <span class="tag">HTML</span>
                   <span class="tag">CSS</span>
                   <span class="tag">JavaScript</span>
@@ -592,6 +594,7 @@
                   class="linkbtn"
                   href="https://github.com/YasmimOliveiraQueiros/MeuPortfio"
                   aria-label="Abrir repositório deste portfólio no GitHub"
+                  data-i18n-aria="projects.p2.repoAria"
                   data-i18n="projects.repo"
                 >
                   Repositório
@@ -603,7 +606,7 @@
         </div>
       </section>
 
-      <section class="section" id="certificados" aria-label="Certificados">
+      <section class="section" id="certificados" aria-label="Certificados" data-i18n-aria="certs.section.aria">
         <div class="wrap">
           <header class="section__head section__head--inline">
             <div>
@@ -619,10 +622,12 @@
                   class="cert__thumbImg"
                   src="assets/certificados/img/fabrica-programadores.jpg"
                   alt="Certificado: UANE · Fábrica de Programadores"
+                  data-i18n-alt="certs.uane.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
                   data-caption="UANE · Fábrica de Programadores"
+                  data-i18n-caption="certs.uane.caption"
                 />
               </div>
               <div class="certcard__body">
@@ -630,7 +635,7 @@
                   <h3 class="certcard__title" data-i18n="certs.uane.title">Fábrica de Programadores</h3>
                   <div class="certcard__meta" data-i18n="certs.uane.meta">UANE · Programação em blocos</div>
                 </div>
-                <div class="certcard__year" aria-label="Ano">2026</div>
+                <div class="certcard__year" aria-label="Ano" data-i18n-aria="aria.year">2026</div>
               </div>
             </article>
 
@@ -640,10 +645,12 @@
                   class="cert__thumbImg"
                   src="assets/certificados/img/huawei-hccda-cloud.jpg"
                   alt="Certificado: Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)"
+                  data-i18n-alt="certs.huaweiCloud.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
                   data-caption="Huawei ICT Academy · HCCDA - Tech Essentials (Cloud)"
+                  data-i18n-caption="certs.huaweiCloud.caption"
                 />
               </div>
               <div class="certcard__body">
@@ -651,7 +658,7 @@
                   <h3 class="certcard__title" data-i18n="certs.huaweiCloud.title">HCCDA - Tech Essentials (Cloud)</h3>
                   <div class="certcard__meta" data-i18n="certs.huaweiCloud.meta">Huawei ICT Academy · 21/02/2026</div>
                 </div>
-                <div class="certcard__year" aria-label="Ano">2026</div>
+                <div class="certcard__year" aria-label="Ano" data-i18n-aria="aria.year">2026</div>
               </div>
             </article>
 
@@ -661,10 +668,12 @@
                   class="cert__thumbImg"
                   src="assets/certificados/img/huawei-redes.png"
                   alt="Certificado: Huawei · Redes de computadores"
+                  data-i18n-alt="certs.huaweiNetworks.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
                   data-caption="Huawei · Redes de computadores"
+                  data-i18n-caption="certs.huaweiNetworks.caption"
                 />
               </div>
               <div class="certcard__body">
@@ -672,28 +681,30 @@
                   <h3 class="certcard__title" data-i18n="certs.huaweiNetworks.title">HCCDA - Computer Networks (Redes)</h3>
                   <div class="certcard__meta" data-i18n="certs.huaweiNetworks.meta">Huawei · Certificado de redes</div>
                 </div>
-                <div class="certcard__year" aria-label="Ano">2026</div>
+                <div class="certcard__year" aria-label="Ano" data-i18n-aria="aria.year">2026</div>
               </div>
             </article>
 
-             <article class="card certcard certcard--alura-fullstack">
+             <article class="card certcard certcard--alura">
               <div class="cert__thumbWrap">
                 <img
                   class="cert__thumbImg"
                   src="assets/certificados/img/Alura-Dev.jpg"
-                  alt="Certificado: Alura · Formação Dev Fullstack"
+                  alt="Certificado: Alura · Imersão Front-end com IA"
+                  data-i18n-alt="certs.aluraIa.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
-                  data-caption="Alura · Formação Dev Fullstack"
+                  data-caption="Alura · Imersão Front-end com IA"
+                  data-i18n-caption="certs.aluraIa.caption"
                 />
               </div>
               <div class="certcard__body">
                 <div class="certcard__text">
-                  <h3 class="certcard__title" data-i18n="certs.aluraFullstack.title">Alura · Formação Dev Fullstack</h3>
-                  <div class="certcard__meta" data-i18n="certs.aluraFullstack.meta">Alura · Dev Fullstack 2026</div>
+                  <h3 class="certcard__title" data-i18n="certs.aluraIa.title">Imersão Front-end com IA</h3>
+                  <div class="certcard__meta" data-i18n="certs.aluraIa.meta">Alura · 08/04/2026</div>
                 </div>
-                <div class="certcard__year" aria-label="Ano">2026</div>
+                <div class="certcard__year" aria-label="Ano" data-i18n-aria="aria.year">2026</div>
               </div>
             </article>
 
@@ -703,10 +714,12 @@
                   class="cert__thumbImg"
                   src="assets/certificados/img/clm-ingles.jpg"
                   alt="Certificado: CLM · Inglês"
+                  data-i18n-alt="certs.clm.alt"
                   loading="lazy"
                   decoding="async"
                   data-lightbox
                   data-caption="CLM · Certificado de Inglês"
+                  data-i18n-caption="certs.clm.caption"
                 />
               </div>
               <div class="certcard__body">
@@ -714,14 +727,14 @@
                   <h3 class="certcard__title" data-i18n="certs.clm.title">Certificado de Inglês</h3>
                   <div class="certcard__meta" data-i18n="certs.clm.meta">CLM · 17/03/2026</div>
                 </div>
-                <div class="certcard__year" aria-label="Ano">2026</div>
+                <div class="certcard__year" aria-label="Ano" data-i18n-aria="aria.year">2026</div>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="contato" aria-label="Contato">
+      <section class="section" id="contato" aria-label="Contato" data-i18n-aria="contact.section.aria">
         <div class="wrap">
           <header class="section__head">
             <h2 class="section__title" data-i18n="section.contact.title">Contato</h2>
@@ -820,7 +833,7 @@
       </section>
     </main>
 
-    <footer class="footer" aria-label="Rodapé">
+    <footer class="footer" aria-label="Rodapé" data-i18n-aria="footer.aria">
       <div class="wrap footer__inner">
         <span>© <span id="year"></span> Yasmim Oliveira Queiros</span>
         <a class="footer__link" href="#home" data-i18n="footer.top">Voltar ao topo</a>
