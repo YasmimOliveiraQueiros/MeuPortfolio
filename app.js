@@ -945,6 +945,7 @@ function renderProjectsFromRepos(repos) {
   applyProjectsI18n(lang);
   // Apply aria translations for newly created elements
   applyI18n(lang);
+  updateProjectCount();
 }
 
 async function updateProjectsFromGithub() {
@@ -1432,10 +1433,18 @@ function updateCertCount() {
   });
 }
 
+function updateProjectCount() {
+  const count = qsa("#projetos .project").length;
+  qsa('[data-count="projects"]').forEach((el) => {
+    el.textContent = String(count);
+  });
+}
+
 function main() {
   restoreTheme();
   restoreLang();
   updateCertCount();
+  updateProjectCount();
   updateProjectsFromGithub();
   runIntro();
   bindTheme();
