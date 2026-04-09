@@ -825,7 +825,7 @@ async function fetchGithubRepos() {
       const parsed = JSON.parse(raw);
       const ts = Number(parsed && parsed.ts);
       const repos = parsed && parsed.repos;
-      if (ts && Array.isArray(repos) && Date.now() - ts < 6 * 60 * 60 * 1000) return repos;
+      if (ts && Array.isArray(repos) && Date.now() - ts < 10 * 60 * 1000) return repos;
     }
   } catch {
     // ignore cache errors
