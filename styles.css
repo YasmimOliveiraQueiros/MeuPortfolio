@@ -64,16 +64,6 @@ html[data-theme="preto"] {
   --topbar-border: rgba(255, 255, 255, 0.08);
   --footer-bg: rgba(7, 10, 18, 0.70);
 }
-html[data-theme="vermelho"] {
-  --accent: #ef4444;
-  --accent2: #fb7185;
-  --accent-soft: rgba(239, 68, 68, 0.16);
-  --accent-soft2: rgba(251, 113, 133, 0.14);
-  --accent-border: rgba(239, 68, 68, 0.26);
-  --accent-glow: rgba(239, 68, 68, 0.20);
-  --ring: 0 0 0 4px rgba(239, 68, 68, 0.20);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -705,13 +695,9 @@ a {
 .swatch[data-theme="preto"] {
   background: linear-gradient(135deg, #0b0f1a, #111827);
 }
-.swatch[data-theme="vermelho"] {
-  background: linear-gradient(135deg, #ef4444, #fb7185);
-}
 html[data-theme="azul"] .swatch[data-theme="azul"],
 html[data-theme="lilas"] .swatch[data-theme="lilas"],
-html[data-theme="preto"] .swatch[data-theme="preto"],
-html[data-theme="vermelho"] .swatch[data-theme="vermelho"] {
+html[data-theme="preto"] .swatch[data-theme="preto"] {
   box-shadow: 0 0 0 3px var(--accent-glow);
   border-color: var(--accent-border);
 }
