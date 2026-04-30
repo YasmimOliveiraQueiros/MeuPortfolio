@@ -276,9 +276,11 @@ const I18N = {
     "meta.title": "Portfólio · Técnica em Informática",
     "meta.desc": "Portfólio responsivo de técnica em informática: sobre, habilidades, projetos e certificados.",
     skip: "Pular para o conteúdo",
-    "intro.kicker": "Portfólio",
-    "intro.skip": "Pular",
-    "intro.aria": "Abertura do portfólio",
+    "boot.label": "NEXUS // ACESSO",
+    "boot.enter": "Entrar",
+    "boot.bypass": "Pular",
+    "boot.hint": "Pressione Enter ou clique para continuar",
+    "boot.aria": "Abertura do portfólio",
     "brand.sub": "Técnica em Informática · Dev Front-end/Back-end",
     "idcard.role": "Técnica em Informática",
     "topbar.aria": "Barra superior",
@@ -476,9 +478,11 @@ const I18N = {
     "meta.title": "Portfolio · IT Student",
     "meta.desc": "Responsive portfolio: about, skills, projects and certificates.",
     skip: "Skip to content",
-    "intro.kicker": "Portfolio",
-    "intro.skip": "Skip",
-    "intro.aria": "Portfolio intro",
+    "boot.label": "NEXUS // ACCESS",
+    "boot.enter": "Enter",
+    "boot.bypass": "Skip",
+    "boot.hint": "Press Enter or click to continue",
+    "boot.aria": "Portfolio opening",
     "brand.sub": "IT Student · Front-end/Back-end Dev",
     "idcard.role": "IT Student",
     "topbar.aria": "Top bar",
@@ -1152,8 +1156,8 @@ function buildGmailComposeUrl({ to, cc, subject, body }) {
   return `https://mail.google.com/mail/?${params.toString()}`;
 }
 
-function runIntro() {
-  const root = qs("#intro");
+function runBootgate() {
+  const root = qs("#bootgate");
   if (!root) return;
 
   const prefersReducedMotion =
@@ -1166,15 +1170,24 @@ function runIntro() {
     return;
   }
 
-  const skipBtn = qs("#introSkip");
-  const canvas = qs("#introCanvas");
+  const enterBtn = qs("#bootEnter");
+  const bypassBtn = qs("#bootBypass");
+  const canvas = qs("#bootFx");
+  const meter = qs("#bootMeter");
+  const clock = qs("#bootClock");
+  const meterNodes = meter ? Array.from(meter.querySelectorAll("span")) : [];
+
+  const DURATION_MS = 4200;
+
   let done = false;
-  let timer = 0;
-  let raf = 0;
-  let resizeTimer = 0;
-  let particles = [];
-  let ctx = null;
   let start = 0;
+  let raf = 0;
+  let timer = 0;
+  let resizeTimer = 0;
+  let ctx = null;
+  let rings = [];
+  let rays = [];
+  let lastClock = 0;
 
   const getColor = (name, fallback) => {
     try {
@@ -1194,20 +1207,52 @@ function runIntro() {
     const h = Math.max(1, Math.round(rect.height * dpr));
     if (c.width !== w) c.width = w;
     if (c.height !== h) c.height = h;
+
     ctx = c.getContext("2d");
     if (!ctx) return false;
 
-    const count = Math.round(Math.min(130, Math.max(80, (rect.width * rect.height) / 14000)));
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.18,
-      vy: (Math.random() - 0.5) * 0.18,
-      r: 0.8 + Math.random() * 1.9,
-      a: 0.32 + Math.random() * 0.55,
+    const area = Math.max(1, rect.width * rect.height);
+    const ringCount = Math.round(Math.min(70, Math.max(34, area / 22000)));
+    rings = Array.from({ length: ringCount }, (_, i) => ({
+      z: i / ringCount,
+      sides: 5 + Math.floor(Math.random() * 5),
+      twist: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.65,
       phase: Math.random() * Math.PI * 2,
+      w: 0.8 + Math.random() * 1.9,
     }));
+
+    const rayCount = Math.round(Math.min(90, Math.max(50, area / 36000)));
+    rays = Array.from({ length: rayCount }, () => ({
+      a: Math.random() * Math.PI * 2,
+      z: Math.random(),
+      len: 0.25 + Math.random() * 0.85,
+      w: 0.6 + Math.random() * 1.8,
+    }));
+
     return true;
+  };
+
+  const setMeter = (progress) => {
+    if (!meterNodes.length) return;
+    const onCount = Math.max(0, Math.min(meterNodes.length, Math.round(progress * meterNodes.length)));
+    meterNodes.forEach((el, i) => el.setAttribute("data-on", i < onCount ? "1" : "0"));
+  };
+
+  const setClock = (t) => {
+    if (!clock) return;
+    if (!lastClock || t - lastClock > 250) {
+      lastClock = t;
+      try {
+        clock.textContent = new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+      } catch {
+        clock.textContent = "";
+      }
+    }
   };
 
   const draw = (t) => {
@@ -1215,102 +1260,88 @@ function runIntro() {
     if (!start) start = t;
 
     const elapsed = (t - start) / 1000;
+    const progress = Math.min(1, (t - start) / DURATION_MS);
+
+    setMeter(progress);
+    setClock(t);
+
     const c = canvas;
     const w = c.width;
     const h = c.height;
     const cx = w * 0.5;
-    const cy = h * 0.46;
+    const cy = h * 0.52;
+    const m = Math.min(w, h);
 
-    const accent = getColor("--accent", "rgba(59,130,246,1)");
-    const accent2 = getColor("--accent2", "rgba(56,189,248,1)");
+    const accent = getColor("--accent", "#3b82f6");
+    const accent2 = getColor("--accent2", "#38bdf8");
 
     ctx.clearRect(0, 0, w, h);
 
-    // Soft vignette to keep focus near center
-    const vignette = ctx.createRadialGradient(cx, cy, 40, cx, cy, Math.max(w, h) * 0.70);
-    vignette.addColorStop(0, "rgba(0,0,0,0)");
-    vignette.addColorStop(1, "rgba(0,0,0,0.30)");
-    ctx.fillStyle = vignette;
+    const bg = ctx.createRadialGradient(cx, cy, 20, cx, cy, m * 0.85);
+    bg.addColorStop(0, "rgba(0,0,0,0)");
+    bg.addColorStop(1, "rgba(0,0,0,0.44)");
+    ctx.fillStyle = bg;
     ctx.fillRect(0, 0, w, h);
 
-    const orbit = 0.58 + Math.sin(elapsed * 0.35) * 0.06;
-    const pull = 0.00115;
-    const maxDist = Math.min(w, h) * 0.16;
-
-    // Update particles
-    for (const p of particles) {
-      const dx = cx - p.x;
-      const dy = cy - p.y;
-      p.vx += dx * pull;
-      p.vy += dy * pull;
-
-      // gentle swirl
-      const sw = 0.00018;
-      p.vx += -dy * sw * orbit;
-      p.vy += dx * sw * orbit;
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      // small damping for slower motion
-      p.vx *= 0.995;
-      p.vy *= 0.995;
-
-      // bounds
-      if (p.x < -20) p.x = w + 20;
-      if (p.x > w + 20) p.x = -20;
-      if (p.y < -20) p.y = h + 20;
-      if (p.y > h + 20) p.y = -20;
-    }
-
-    // Lines
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
-    ctx.lineWidth = 1;
-    for (let i = 0; i < particles.length; i++) {
-      const a = particles[i];
-      for (let j = i + 1; j < particles.length; j++) {
-        const b = particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const d = Math.hypot(dx, dy);
-        if (d > maxDist) continue;
-        const alpha = (1 - d / maxDist) * 0.20;
-        ctx.globalAlpha = alpha;
-        ctx.strokeStyle = accent2;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-    }
-    ctx.globalAlpha = 1;
 
-    // Accent arcs
-    const r0 = Math.min(w, h) * 0.14;
-    ctx.globalAlpha = 0.45;
-    ctx.strokeStyle = accent;
-    ctx.lineWidth = Math.max(2, Math.min(5, w * 0.0028));
-    ctx.beginPath();
-    ctx.arc(cx, cy, r0, elapsed * 0.22, elapsed * 0.22 + 1.8);
-    ctx.stroke();
+    const speed = 0.22;
+    for (let i = 0; i < rings.length; i++) {
+      const ring = rings[i];
+      const z = (ring.z + elapsed * speed) % 1;
+      const k = 1 - z;
+      const radius = m * (0.10 + k * k * 0.58);
+      const rot = ring.twist + elapsed * ring.spin;
+      const squash = 0.78 + 0.14 * Math.sin(elapsed * 0.9 + ring.phase);
+      const pulse = 1 + 0.05 * Math.sin(elapsed * 2.1 + ring.phase * 2);
 
-    ctx.strokeStyle = accent2;
-    ctx.globalAlpha = 0.30;
-    ctx.lineWidth = Math.max(2, Math.min(4, w * 0.0022));
-    ctx.beginPath();
-    ctx.arc(cx, cy, r0 * 1.22, -elapsed * 0.18, -elapsed * 0.18 + 1.4);
-    ctx.stroke();
-    ctx.globalAlpha = 1;
+      ctx.globalAlpha = 0.56 * k * k;
+      ctx.lineWidth = Math.max(1, ring.w * (0.8 + k * 2.2));
+      ctx.strokeStyle = i % 2 ? accent : accent2;
 
-    // Dots
-    for (const p of particles) {
-      const tw = 0.55 + 0.45 * (Math.sin(elapsed * 0.8 + p.phase) * 0.5 + 0.5);
-      ctx.fillStyle = `rgba(255,255,255,${p.a * tw})`;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
+      for (let s = 0; s <= ring.sides; s++) {
+        const a = (s / ring.sides) * Math.PI * 2 + rot;
+        const x = cx + Math.cos(a) * radius * pulse;
+        const y = cy + Math.sin(a) * radius * squash * pulse;
+        if (s === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
     }
+
+    const raySpeed = 0.46;
+    for (let i = 0; i < rays.length; i++) {
+      const ray = rays[i];
+      const z = (ray.z + elapsed * raySpeed) % 1;
+      const k = 1 - z;
+      const r0 = m * (0.05 + k * 0.18);
+      const r1 = r0 + m * k * k * 0.42 * ray.len;
+      const x0 = cx + Math.cos(ray.a) * r0;
+      const y0 = cy + Math.sin(ray.a) * r0 * 0.82;
+      const x1 = cx + Math.cos(ray.a) * r1;
+      const y1 = cy + Math.sin(ray.a) * r1 * 0.82;
+
+      ctx.globalAlpha = 0.22 * k * k;
+      ctx.lineWidth = Math.max(1, ray.w * (0.6 + k * 1.4));
+      ctx.strokeStyle = i % 3 ? "rgba(255,255,255,0.55)" : accent2;
+
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.stroke();
+    }
+
+    const scanY = (elapsed * 90) % h;
+    const scan = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
+    scan.addColorStop(0, "rgba(255,255,255,0)");
+    scan.addColorStop(0.5, "rgba(255,255,255,0.12)");
+    scan.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.globalAlpha = 0.35;
+    ctx.fillStyle = scan;
+    ctx.fillRect(0, scanY - 60, w, 120);
+
     ctx.restore();
 
     raf = window.requestAnimationFrame(draw);
@@ -1322,12 +1353,13 @@ function runIntro() {
     if (timer) window.clearTimeout(timer);
     if (raf) window.cancelAnimationFrame(raf);
     if (resizeTimer) window.clearTimeout(resizeTimer);
-    root.setAttribute("data-state", "closing");
+
+    root.setAttribute("data-phase", "leave");
     setPageScrollLocked(false);
 
     window.setTimeout(() => {
       root.remove();
-    }, 420);
+    }, 360);
 
     document.removeEventListener("keydown", onKeydown, true);
     window.removeEventListener("resize", onResize);
@@ -1351,12 +1383,13 @@ function runIntro() {
   };
 
   root.addEventListener("click", (e) => {
-    const skip = e.target.closest("#introSkip");
-    if (skip) return;
+    const btn = e.target.closest("#bootEnter, #bootBypass");
+    if (btn) return;
     finish();
   });
 
-  if (skipBtn) skipBtn.addEventListener("click", finish);
+  if (enterBtn) enterBtn.addEventListener("click", finish);
+  if (bypassBtn) bypassBtn.addEventListener("click", finish);
 
   setPageScrollLocked(true);
   document.addEventListener("keydown", onKeydown, true);
@@ -1365,11 +1398,11 @@ function runIntro() {
   if (setupCanvas()) raf = window.requestAnimationFrame(draw);
 
   window.requestAnimationFrame(() => {
-    if (root.getAttribute("data-state") !== "open") root.setAttribute("data-state", "open");
-    if (skipBtn) skipBtn.focus();
+    if (root.getAttribute("data-phase") !== "show") root.setAttribute("data-phase", "show");
+    if (enterBtn) enterBtn.focus();
   });
 
-  timer = window.setTimeout(finish, 4800);
+  timer = window.setTimeout(finish, DURATION_MS);
 }
 
 function bindContactForm() {
@@ -1446,7 +1479,7 @@ function main() {
   updateCertCount();
   updateProjectCount();
   updateProjectsFromGithub();
-  runIntro();
+  runBootgate();
   bindTheme();
   bindLang();
   bindNav();
