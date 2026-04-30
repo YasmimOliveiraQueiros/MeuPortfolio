@@ -39,8 +39,8 @@ html[data-theme="azul"] {
   --ring: 0 0 0 4px rgba(59, 130, 246, 0.22);
 }
 html[data-theme="lilas"] {
-  --accent: #c084fc;
-  --accent2: #e879f9;
+  --accent: #6714bb;
+  --accent2: #a84ef1;
   --accent-soft: rgba(192, 132, 252, 0.18);
   --accent-soft2: rgba(232, 121, 249, 0.14);
   --accent-border: rgba(192, 132, 252, 0.28);
