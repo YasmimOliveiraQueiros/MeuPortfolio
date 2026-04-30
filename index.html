@@ -17,59 +17,42 @@
 <a class="skip-link" href="#conteudo" data-i18n="skip">Pular para o conteúdo</a>
 
     <div
-      class="intro"
-      id="intro"
+      class="bootgate"
+      id="bootgate"
       role="dialog"
       aria-modal="true"
       aria-label="Abertura do portfólio"
-      data-i18n-aria="intro.aria"
-      data-state="idle"
+      data-i18n-aria="boot.aria"
+      data-phase="init"
     >
-      <div class="intro__bg" aria-hidden="true">
-        <canvas class="intro__canvas" id="introCanvas"></canvas>
-        <span class="intro__orb intro__orb--a"></span>
-        <span class="intro__orb intro__orb--b"></span>
-        <span class="intro__grid"></span>
-      </div>
+      <canvas class="bootgate__fx" id="bootFx" aria-hidden="true"></canvas>
+      <div class="bootgate__noise" aria-hidden="true"></div>
 
-      <div class="intro__card">
-        <div class="intro__layout">
-          <div class="intro__left">
-            <div class="intro__kicker" data-i18n="intro.kicker">Portfólio</div>
-            <div class="intro__title">Yasmim Oliveira Queiros</div>
-            <div class="intro__sub" data-i18n="brand.sub">Técnica em Informática · Dev Front-end/Back-end</div>
-
-            <div class="intro__line"></div>
-
-            <div class="intro__manifesto">
-              <p>Design limpo. Código organizado. Soluções com propósito.</p>
+      <div class="bootgate__ui">
+        <div class="bootgate__frame" role="document" tabindex="-1">
+          <div class="bootgate__top">
+            <div class="bootgate__sig" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
             </div>
-
-            <div class="intro__chips" aria-hidden="true">
-              <span class="intro__chip">FRONT-END</span>
-              <span class="intro__chip">BACK-END</span>
-              <span class="intro__chip">IA</span>
-              <span class="intro__chip">DADOS</span>
-            </div>
+            <div class="bootgate__label" data-i18n="boot.label">NEXUS // ACESSO</div>
+            <div class="bootgate__clock" id="bootClock" aria-hidden="true"></div>
           </div>
 
-          <aside class="intro__panel" aria-hidden="true">
-            <div class="intro__panelTop">
-              <span class="intro__dot"></span>
-              <span class="intro__dot"></span>
-              <span class="intro__dot"></span>
-            </div>
-            <div class="intro__monogram">YQ</div>
-            <div class="intro__panelTitle">PORTFÓLIO 2026</div>
-            <div class="intro__panelSub">Elegância, clareza e evolução contínua.</div>
-          </aside>
-        </div>
+          <h1 class="bootgate__title">Yasmim Oliveira Queiros</h1>
+          <p class="bootgate__sub" data-i18n="brand.sub">Técnica em Informática · Dev Front-end/Back-end</p>
 
-        <div class="intro__bar" aria-hidden="true">
-          <span class="intro__barFill"></span>
-        </div>
+          <div class="bootgate__meter" id="bootMeter" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
 
-        <button class="intro__skip" type="button" id="introSkip" data-i18n="intro.skip">Pular</button>
+          <div class="bootgate__actions">
+            <button class="bootgate__cta" type="button" id="bootEnter" data-i18n="boot.enter">Entrar</button>
+            <button class="bootgate__ghost" type="button" id="bootBypass" data-i18n="boot.bypass">Pular</button>
+          </div>
+
+          <div class="bootgate__hint" data-i18n="boot.hint">Pressione Enter ou clique para continuar</div>
+        </div>
       </div>
     </div>
 
