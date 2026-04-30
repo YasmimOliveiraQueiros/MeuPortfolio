@@ -1272,8 +1272,8 @@ function runBootgate() {
       const g = ctx.createLinearGradient(0, y0 - width, 0, y0 + width);
       g.addColorStop(0, "rgba(168,85,247,0)");
       g.addColorStop(0.25, `rgba(168,85,247,${0.10 + b.alpha * 0.55})`);
-      g.addColorStop(0.55, `rgba(34,211,238,${0.06 + b.alpha * 0.35})`);
-      g.addColorStop(1, "rgba(34,211,238,0)");
+      g.addColorStop(0.55, `rgba(217,70,239,${0.08 + b.alpha * 0.38})`);
+      g.addColorStop(1, "rgba(217,70,239,0)");
 
       ctx.strokeStyle = g;
       ctx.lineWidth = width;
