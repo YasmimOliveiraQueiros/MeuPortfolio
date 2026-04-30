@@ -243,7 +243,7 @@ function bindLightbox() {
   });
 }
 
-const THEMES = new Set(["azul", "lilas", "preto", "vermelho"]);
+const THEMES = new Set(["azul", "lilas", "preto"]);
 const LANGS = new Set(["pt", "en"]);
 
 const GITHUB_USER = "YasmimOliveiraQueiros";
@@ -309,7 +309,6 @@ const I18N = {
     "theme.swatch.blue": "Tema azul",
     "theme.swatch.purple": "Tema lilás",
     "theme.swatch.black": "Tema preto",
-    "theme.swatch.red": "Tema vermelho",
     "lang.aria": "Idioma",
     "hero.card.ctaCerts": "Ver certificados",
     "hero.card.copyEmail": "Copiar e-mail",
@@ -512,7 +511,6 @@ const I18N = {
     "theme.swatch.blue": "Blue theme",
     "theme.swatch.purple": "Purple theme",
     "theme.swatch.black": "Black theme",
-    "theme.swatch.red": "Red theme",
     "lang.aria": "Language",
     "hero.card.ctaCerts": "View certificates",
     "hero.card.copyEmail": "Copy email",
