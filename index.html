@@ -26,33 +26,20 @@
       data-phase="init"
     >
       <canvas class="bootgate__fx" id="bootFx" aria-hidden="true"></canvas>
-      <div class="bootgate__noise" aria-hidden="true"></div>
+      <div class="bootgate__grain" aria-hidden="true"></div>
+      <div class="bootgate__veil" aria-hidden="true"></div>
 
-      <div class="bootgate__ui">
-        <div class="bootgate__frame" role="document" tabindex="-1">
-          <div class="bootgate__top">
-            <div class="bootgate__sig" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="bootgate__label" data-i18n="boot.label">NEXUS // ACESSO</div>
-            <div class="bootgate__clock" id="bootClock" aria-hidden="true"></div>
-          </div>
+      <div class="bootgate__copy" role="document" tabindex="-1">
+        <div class="bootgate__kicker" data-i18n="boot.kicker">PORTFÓLIO</div>
+        <h1 class="bootgate__name">Yasmim Oliveira Queiros</h1>
+        <p class="bootgate__role" data-i18n="brand.sub">Técnica em Informática · Dev Front-end/Back-end</p>
 
-          <h1 class="bootgate__title">Yasmim Oliveira Queiros</h1>
-          <p class="bootgate__sub" data-i18n="brand.sub">Técnica em Informática · Dev Front-end/Back-end</p>
-
-          <div class="bootgate__meter" id="bootMeter" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-
-          <div class="bootgate__actions">
-            <button class="bootgate__cta" type="button" id="bootEnter" data-i18n="boot.enter">Entrar</button>
-            <button class="bootgate__ghost" type="button" id="bootBypass" data-i18n="boot.bypass">Pular</button>
-          </div>
-
-          <div class="bootgate__hint" data-i18n="boot.hint">Pressione Enter ou clique para continuar</div>
+        <div class="bootgate__ctaRow">
+          <button class="bootgate__enter" type="button" id="bootEnter" data-i18n="boot.enter">Iniciar</button>
+          <button class="bootgate__skip" type="button" id="bootBypass" data-i18n="boot.bypass">Pular intro</button>
         </div>
+
+        <div class="bootgate__hint" data-i18n="boot.hint">Clique ou pressione Enter</div>
       </div>
     </div>
 

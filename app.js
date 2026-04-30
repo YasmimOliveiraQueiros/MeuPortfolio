@@ -277,9 +277,10 @@ const I18N = {
     "meta.desc": "Portfólio responsivo de técnica em informática: sobre, habilidades, projetos e certificados.",
     skip: "Pular para o conteúdo",
     "boot.label": "NEXUS // ACESSO",
-    "boot.enter": "Entrar",
-    "boot.bypass": "Pular",
-    "boot.hint": "Pressione Enter ou clique para continuar",
+    "boot.kicker": "Portfólio",
+    "boot.enter": "Iniciar",
+    "boot.bypass": "Pular intro",
+    "boot.hint": "Clique ou pressione Enter",
     "boot.aria": "Abertura do portfólio",
     "brand.sub": "Técnica em Informática · Dev Front-end/Back-end",
     "idcard.role": "Técnica em Informática",
@@ -479,9 +480,10 @@ const I18N = {
     "meta.desc": "Responsive portfolio: about, skills, projects and certificates.",
     skip: "Skip to content",
     "boot.label": "NEXUS // ACCESS",
-    "boot.enter": "Enter",
-    "boot.bypass": "Skip",
-    "boot.hint": "Press Enter or click to continue",
+    "boot.kicker": "Portfolio",
+    "boot.enter": "Start",
+    "boot.bypass": "Skip intro",
+    "boot.hint": "Click or press Enter",
     "boot.aria": "Portfolio opening",
     "brand.sub": "IT Student · Front-end/Back-end Dev",
     "idcard.role": "IT Student",
@@ -1173,21 +1175,19 @@ function runBootgate() {
   const enterBtn = qs("#bootEnter");
   const bypassBtn = qs("#bootBypass");
   const canvas = qs("#bootFx");
-  const meter = qs("#bootMeter");
-  const clock = qs("#bootClock");
-  const meterNodes = meter ? Array.from(meter.querySelectorAll("span")) : [];
 
-  const DURATION_MS = 4200;
+  const DURATION_MS = 5600;
 
   let done = false;
   let start = 0;
+  let lastT = 0;
   let raf = 0;
   let timer = 0;
   let resizeTimer = 0;
   let ctx = null;
-  let rings = [];
-  let rays = [];
-  let lastClock = 0;
+  let stars = [];
+  let streaks = [];
+  let bands = [];
 
   const getColor = (name, fallback) => {
     try {
@@ -1212,47 +1212,32 @@ function runBootgate() {
     if (!ctx) return false;
 
     const area = Math.max(1, rect.width * rect.height);
-    const ringCount = Math.round(Math.min(70, Math.max(34, area / 22000)));
-    rings = Array.from({ length: ringCount }, (_, i) => ({
-      z: i / ringCount,
-      sides: 5 + Math.floor(Math.random() * 5),
-      twist: Math.random() * Math.PI * 2,
-      spin: (Math.random() - 0.5) * 0.65,
-      phase: Math.random() * Math.PI * 2,
-      w: 0.8 + Math.random() * 1.9,
+    const count = Math.round(Math.min(240, Math.max(120, area / 8000)));
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: 0.4 + Math.random() * 1.4,
+      a: 0.18 + Math.random() * 0.55,
+      v: 6 + Math.random() * 26,
+      tw: Math.random() * Math.PI * 2,
+      tws: 0.7 + Math.random() * 1.8,
     }));
 
-    const rayCount = Math.round(Math.min(90, Math.max(50, area / 36000)));
-    rays = Array.from({ length: rayCount }, () => ({
-      a: Math.random() * Math.PI * 2,
-      z: Math.random(),
-      len: 0.25 + Math.random() * 0.85,
-      w: 0.6 + Math.random() * 1.8,
+    bands = Array.from({ length: 4 }, (_, i) => ({
+      phase: Math.random() * Math.PI * 2,
+      amp: 0.10 + i * 0.05 + Math.random() * 0.04,
+      freq: 0.006 + Math.random() * 0.006,
+      freq2: 0.016 + Math.random() * 0.010,
+      speed: 0.32 + Math.random() * 0.28,
+      drift: (Math.random() - 0.5) * 0.08,
+      alpha: 0.22 + i * 0.06,
+      width: 0.024 + i * 0.012,
     }));
+
+    streaks = [];
+    lastT = 0;
 
     return true;
-  };
-
-  const setMeter = (progress) => {
-    if (!meterNodes.length) return;
-    const onCount = Math.max(0, Math.min(meterNodes.length, Math.round(progress * meterNodes.length)));
-    meterNodes.forEach((el, i) => el.setAttribute("data-on", i < onCount ? "1" : "0"));
-  };
-
-  const setClock = (t) => {
-    if (!clock) return;
-    if (!lastClock || t - lastClock > 250) {
-      lastClock = t;
-      try {
-        clock.textContent = new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-      } catch {
-        clock.textContent = "";
-      }
-    }
   };
 
   const draw = (t) => {
@@ -1260,10 +1245,8 @@ function runBootgate() {
     if (!start) start = t;
 
     const elapsed = (t - start) / 1000;
-    const progress = Math.min(1, (t - start) / DURATION_MS);
-
-    setMeter(progress);
-    setClock(t);
+    const dt = Math.min(0.033, Math.max(0.001, lastT ? (t - lastT) / 1000 : 0.016));
+    lastT = t;
 
     const c = canvas;
     const w = c.width;
@@ -1277,70 +1260,106 @@ function runBootgate() {
 
     ctx.clearRect(0, 0, w, h);
 
-    const bg = ctx.createRadialGradient(cx, cy, 20, cx, cy, m * 0.85);
-    bg.addColorStop(0, "rgba(0,0,0,0)");
-    bg.addColorStop(1, "rgba(0,0,0,0.44)");
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, w, h);
-
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
 
-    const speed = 0.22;
-    for (let i = 0; i < rings.length; i++) {
-      const ring = rings[i];
-      const z = (ring.z + elapsed * speed) % 1;
-      const k = 1 - z;
-      const radius = m * (0.10 + k * k * 0.58);
-      const rot = ring.twist + elapsed * ring.spin;
-      const squash = 0.78 + 0.14 * Math.sin(elapsed * 0.9 + ring.phase);
-      const pulse = 1 + 0.05 * Math.sin(elapsed * 2.1 + ring.phase * 2);
+    // Aurora ribbons (cinematic, non-HUD)
+    const baseAmp = m * 0.10;
+    for (let i = 0; i < bands.length; i++) {
+      const b = bands[i];
+      const amp = baseAmp * b.amp;
+      const width = Math.max(10, m * b.width);
+      const y0 = cy + (i - 1.5) * m * 0.05 + Math.sin(elapsed * 0.22 + b.phase) * m * 0.03;
 
-      ctx.globalAlpha = 0.56 * k * k;
-      ctx.lineWidth = Math.max(1, ring.w * (0.8 + k * 2.2));
-      ctx.strokeStyle = i % 2 ? accent : accent2;
+      const g = ctx.createLinearGradient(0, y0 - width, 0, y0 + width);
+      g.addColorStop(0, "rgba(168,85,247,0)");
+      g.addColorStop(0.25, `rgba(168,85,247,${0.10 + b.alpha * 0.55})`);
+      g.addColorStop(0.55, `rgba(34,211,238,${0.06 + b.alpha * 0.35})`);
+      g.addColorStop(1, "rgba(34,211,238,0)");
+
+      ctx.strokeStyle = g;
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.globalAlpha = 0.75;
+      ctx.shadowColor = "rgba(168,85,247,0.28)";
+      ctx.shadowBlur = Math.max(12, width * 0.55);
 
       ctx.beginPath();
-      for (let s = 0; s <= ring.sides; s++) {
-        const a = (s / ring.sides) * Math.PI * 2 + rot;
-        const x = cx + Math.cos(a) * radius * pulse;
-        const y = cy + Math.sin(a) * radius * squash * pulse;
-        if (s === 0) ctx.moveTo(x, y);
+      const step = Math.max(10, Math.round(w / 70));
+      for (let x = -step; x <= w + step; x += step) {
+        const n1 = Math.sin(x * b.freq + elapsed * b.speed + b.phase);
+        const n2 = Math.sin(x * b.freq2 - elapsed * (b.speed * 1.18) + b.phase * 1.7);
+        const drift = Math.sin(elapsed * 0.15 + b.phase) * m * b.drift;
+        const y = y0 + drift + (n1 * 0.65 + n2 * 0.35) * amp;
+        if (x <= 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
     }
 
-    const raySpeed = 0.46;
-    for (let i = 0; i < rays.length; i++) {
-      const ray = rays[i];
-      const z = (ray.z + elapsed * raySpeed) % 1;
-      const k = 1 - z;
-      const r0 = m * (0.05 + k * 0.18);
-      const r1 = r0 + m * k * k * 0.42 * ray.len;
-      const x0 = cx + Math.cos(ray.a) * r0;
-      const y0 = cy + Math.sin(ray.a) * r0 * 0.82;
-      const x1 = cx + Math.cos(ray.a) * r1;
-      const y1 = cy + Math.sin(ray.a) * r1 * 0.82;
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = "transparent";
 
-      ctx.globalAlpha = 0.22 * k * k;
-      ctx.lineWidth = Math.max(1, ray.w * (0.6 + k * 1.4));
-      ctx.strokeStyle = i % 3 ? "rgba(255,255,255,0.55)" : accent2;
+    // Stars
+    ctx.globalCompositeOperation = "screen";
+    for (const s of stars) {
+      s.y += s.v * dt * (m / 700);
+      if (s.y > h + 40) {
+        s.y = -40;
+        s.x = Math.random() * w;
+        s.v = 6 + Math.random() * 26;
+        s.r = 0.4 + Math.random() * 1.4;
+        s.a = 0.18 + Math.random() * 0.55;
+      }
 
+      const tw = 0.62 + 0.38 * (Math.sin(elapsed * s.tws + s.tw) * 0.5 + 0.5);
+      ctx.fillStyle = `rgba(255,255,255,${s.a * tw})`;
       ctx.beginPath();
-      ctx.moveTo(x0, y0);
-      ctx.lineTo(x1, y1);
-      ctx.stroke();
+      ctx.arc(s.x, s.y, s.r * (0.85 + tw * 0.35), 0, Math.PI * 2);
+      ctx.fill();
     }
 
-    const scanY = (elapsed * 90) % h;
-    const scan = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
-    scan.addColorStop(0, "rgba(255,255,255,0)");
-    scan.addColorStop(0.5, "rgba(255,255,255,0.12)");
-    scan.addColorStop(1, "rgba(255,255,255,0)");
-    ctx.globalAlpha = 0.35;
-    ctx.fillStyle = scan;
-    ctx.fillRect(0, scanY - 60, w, 120);
+    // Occasional shooting streaks
+    if (streaks.length < 5 && Math.random() < 0.045) {
+      const fromLeft = Math.random() < 0.5;
+      streaks.push({
+        x: fromLeft ? -60 : w + 60,
+        y: Math.random() * h * 0.55,
+        vx: fromLeft ? (420 + Math.random() * 520) : -(420 + Math.random() * 520),
+        vy: 140 + Math.random() * 220,
+        life: 0,
+        max: 0.5 + Math.random() * 0.45,
+      });
+    }
+
+    for (let i = streaks.length - 1; i >= 0; i--) {
+      const st = streaks[i];
+      st.life += dt;
+      st.x += st.vx * dt;
+      st.y += st.vy * dt;
+      const k = 1 - Math.min(1, st.life / st.max);
+      if (k <= 0) {
+        streaks.splice(i, 1);
+        continue;
+      }
+
+      ctx.globalAlpha = 0.28 * k;
+      ctx.lineWidth = 2.2;
+      const len = 80 + 120 * k;
+      const a = Math.atan2(st.vy, st.vx);
+      const x1 = st.x - Math.cos(a) * len;
+      const y1 = st.y - Math.sin(a) * len;
+      const grad = ctx.createLinearGradient(x1, y1, st.x, st.y);
+      grad.addColorStop(0, "rgba(168,85,247,0)");
+      grad.addColorStop(0.5, accent2);
+      grad.addColorStop(1, "rgba(255,255,255,0.85)");
+      ctx.strokeStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(st.x, st.y);
+      ctx.stroke();
+    }
 
     ctx.restore();
 
@@ -1359,7 +1378,7 @@ function runBootgate() {
 
     window.setTimeout(() => {
       root.remove();
-    }, 360);
+    }, 420);
 
     document.removeEventListener("keydown", onKeydown, true);
     window.removeEventListener("resize", onResize);
