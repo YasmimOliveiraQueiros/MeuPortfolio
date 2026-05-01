@@ -493,9 +493,9 @@ a {
   background:
     radial-gradient(520px 340px at 22% 28%, var(--accent-soft), transparent 66%),
     radial-gradient(620px 420px at 76% 18%, var(--accent-soft2), transparent 70%);
-  opacity: 0.75;
+  opacity: 0.45;
   pointer-events: none;
-  filter: blur(6px);
+  filter: blur(3px);
 }
 .hero__portraitImg {
   position: absolute;
@@ -504,7 +504,7 @@ a {
   height: 520px;
   width: auto;
   object-fit: cover;
-  opacity: 0.9;
+  opacity: 0.96;
   filter: contrast(1.06) saturate(1.02);
   mix-blend-mode: screen;
   transform: translateX(16px);
