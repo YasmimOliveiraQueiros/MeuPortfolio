@@ -385,21 +385,22 @@ a {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  min-width: 220px;
+  min-width: auto;
+  margin-left: -2px;
 }
 
 .brand__logo {
   display: inline-block;
   line-height: 1;
   font-weight: 950;
-  letter-spacing: -0.6px;
-  font-size: 22px;
+  letter-spacing: -1px;
+  font-size: 30px;
   font-variation-settings: "wght" 900;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 18px 50px var(--accent-glow);
+  text-shadow: 0 26px 70px var(--accent-glow);
 }
 
 .brand__text,
