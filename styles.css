@@ -480,14 +480,6 @@ a {
   z-index: 2;
 }
 
-.hero__side {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-  position: relative;
-  z-index: 3;
-}
-
 .hero__portrait {
   position: absolute;
   inset: 0;
@@ -740,17 +732,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
   border-color: var(--accent-border);
 }
 
-.hero__mini {
-  border-radius: 22px;
-  border: 1px solid var(--stroke);
-  background: var(--card);
-  box-shadow: var(--shadow2);
-  padding: 18px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(10px);
-}
 
 .idcard {
   display: flex;
@@ -787,18 +768,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
   height: 320px;
   border-radius: 34px;
   box-shadow: 0 50px 140px var(--accent-glow), 0 26px 90px rgba(0, 0, 0, 0.58);
-}
-.idcard--mini {
-  margin-bottom: 14px;
-}
-.idcard--mini .idcard__meta {
-  text-align: center;
-}
-.idcard--mini .idcard__name {
-  font-size: 16px;
-}
-.idcard--mini .idcard__role {
-  font-size: 12.5px;
 }
 .avatar__img {
   position: absolute;
@@ -839,9 +808,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
   display: grid;
   gap: 10px;
 }
-.hero__mini .facts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 .facts__item {
   display: grid;
   grid-template-columns: 84px 1fr;
@@ -850,11 +816,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
   border-radius: 14px;
   border: 1px solid var(--topbar-border);
   background: var(--card);
-}
-.hero__mini .facts__item {
-  grid-template-columns: 1fr;
-  gap: 6px;
-  padding: 12px 12px;
 }
 .facts dt {
   color: var(--muted);
@@ -870,16 +831,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-}
-.hero__mini .quick {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: auto;
-}
-.hero__mini .quick .btn {
-  width: 100%;
-  justify-content: center;
 }
 
 .section {
@@ -1860,12 +1811,6 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
     height: 360px;
     opacity: 0.72;
     transform: translateX(20px);
-  }
-  .hero__mini .facts {
-    grid-template-columns: 1fr;
-  }
-  .hero__mini .quick {
-    grid-template-columns: 1fr;
   }
   .avatar {
     width: 72px;
