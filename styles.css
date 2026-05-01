@@ -493,9 +493,9 @@ a {
   background:
     radial-gradient(520px 340px at 22% 28%, var(--accent-soft), transparent 66%),
     radial-gradient(620px 420px at 76% 18%, var(--accent-soft2), transparent 70%);
-  opacity: 0.45;
+  opacity: 0.14;
   pointer-events: none;
-  filter: blur(3px);
+  filter: blur(0px);
 }
 .hero__portraitImg {
   position: absolute;
@@ -505,8 +505,8 @@ a {
   width: auto;
   object-fit: cover;
   opacity: 0.96;
-  filter: contrast(1.06) saturate(1.02);
-  mix-blend-mode: screen;
+  filter: contrast(1.04) saturate(1.01);
+  mix-blend-mode: normal;
   transform: translateX(16px);
   mask-image: radial-gradient(closest-side at 56% 40%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   -webkit-mask-image: radial-gradient(closest-side at 56% 40%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
