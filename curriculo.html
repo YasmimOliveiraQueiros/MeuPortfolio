@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="lilas">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Currículo · Yasmim Oliveira Queiros</title>
+    <meta name="description" content="Currículo em PDF para visualização e download." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Barra superior">
+      <div class="wrap topbar__wrap">
+        <a class="brand" href="index.html#home" aria-label="Voltar ao início">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Yasmim</span>
+        </a>
+        <nav class="nav" aria-label="Ações">
+          <div class="nav__links" data-open="true">
+            <a class="nav__link" href="index.html#projetos">Projetos</a>
+            <a class="nav__link" href="index.html#contato">Contato</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="section docpage" aria-label="Currículo">
+        <div class="wrap">
+          <header class="section__head section__head--inline">
+            <div>
+              <h1 class="section__title">Currículo</h1>
+              <p class="section__subtitle">Visualize no navegador ou faça download.</p>
+            </div>
+            <div class="docpage__actions">
+              <a class="btn btn--primary" href="assets/curriculo.pdf" download>Baixar PDF</a>
+              <a class="btn btn--ghost" href="index.html#home">Voltar</a>
+            </div>
+          </header>
+
+          <div class="card docpage__card" aria-label="Pré-visualização do PDF">
+            <iframe class="docpage__frame" title="Currículo em PDF" src="assets/curriculo.pdf"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
