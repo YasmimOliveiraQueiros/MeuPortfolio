@@ -118,41 +118,47 @@
             </div>
           </div>
 
-          <aside class="hero__card" aria-label="Resumo rápido" data-i18n-aria="hero.card.aria">
-            <div class="idcard">
-              <div class="avatar" data-avatar>
-                <span class="avatar__ring"></span>
-                <img
-                  class="avatar__img"
-                  src="assets/foto-perfil.png"
-                  alt="Foto de Yasmim Oliveira Queiros"
-                  data-i18n-alt="profile.alt"
-                  loading="lazy"
-                  decoding="async"
-                  data-lightbox
-                  data-caption="Yasmim Oliveira Queiros"
-                />
-                <span class="avatar__initials" aria-hidden="true">YQ</span>
-              </div>
-              <div class="idcard__meta">
-                <div class="idcard__name">Yasmim Oliveira Queiros</div>
-                <div class="idcard__role" data-i18n="idcard.role">Técnica em Informática</div>
+          <div class="hero__side">
+            <div class="hero__media" aria-label="Foto de perfil">
+              <div class="hero__photoFrame">
+                <div class="avatar avatar--hero" data-avatar>
+                  <span class="avatar__ring"></span>
+                  <img
+                    class="avatar__img"
+                    src="assets/foto-perfil.png"
+                    alt="Foto de Yasmim Oliveira Queiros"
+                    data-i18n-alt="profile.alt"
+                    loading="lazy"
+                    decoding="async"
+                    data-lightbox
+                    data-caption="Yasmim Oliveira Queiros"
+                  />
+                  <span class="avatar__initials" aria-hidden="true">YQ</span>
+                </div>
               </div>
             </div>
 
-            <dl class="facts" aria-label="Destaques" data-i18n-aria="hero.facts.aria">
-              <div class="facts__item">
-                <dt data-i18n="hero.card.role">Atuação</dt>
-                <dd data-i18n="hero.card.roleValue">Front-end e Back-end</dd>
+            <aside class="hero__mini" aria-label="Resumo rápido" data-i18n-aria="hero.card.aria">
+              <div class="idcard idcard--mini">
+                <div class="idcard__meta">
+                  <div class="idcard__name">Yasmim Oliveira Queiros</div>
+                  <div class="idcard__role" data-i18n="idcard.role">Técnica em Informática</div>
+                </div>
               </div>
-              <div class="facts__item">
-                <dt data-i18n="hero.card.focus">Foco</dt>
-                <dd data-i18n="hero.card.focusValue">Software · IA · Dados</dd>
-              </div>
-            </dl>
 
-            <div class="quick">
-              <a class="btn btn--small btn--primary" href="#certificados" data-i18n="hero.card.ctaCerts">Ver certificados</a>
+              <dl class="facts" aria-label="Destaques" data-i18n-aria="hero.facts.aria">
+                <div class="facts__item">
+                  <dt data-i18n="hero.card.role">Atuação</dt>
+                  <dd data-i18n="hero.card.roleValue">Front-end e Back-end</dd>
+                </div>
+                <div class="facts__item">
+                  <dt data-i18n="hero.card.focus">Foco</dt>
+                  <dd data-i18n="hero.card.focusValue">Software · IA · Dados</dd>
+                </div>
+              </dl>
+
+              <div class="quick">
+                <a class="btn btn--small btn--primary" href="#certificados" data-i18n="hero.card.ctaCerts">Ver certificados</a>
                 <button
                   class="btn btn--small btn--ghost"
                   type="button"
@@ -161,8 +167,9 @@
                 >
                   <span data-i18n="hero.card.copyEmail">Copiar e-mail</span>
                 </button>
-            </div>
-          </aside>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
