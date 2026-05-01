@@ -383,41 +383,29 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   min-width: 220px;
 }
 
 .brand__logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid var(--stroke);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.45);
-  position: relative;
-  overflow: hidden;
-  display: inline-grid;
-  place-items: center;
+  display: inline-block;
+  line-height: 1;
   font-weight: 950;
-  letter-spacing: 0.6px;
-  font-size: 14px;
-  color: var(--text);
+  letter-spacing: -0.6px;
+  font-size: 22px;
+  font-variation-settings: "wght" 900;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 18px 50px var(--accent-glow);
 }
 
-.brand__text {
-  display: grid;
-  gap: 0;
-}
-.brand__title {
-  font-weight: 780;
-  letter-spacing: 0.2px;
-}
+.brand__text,
+.brand__title,
 .brand__sub {
-  font-size: 12.8px;
-  color: var(--text);
-  opacity: 0.82;
-  font-weight: 760;
+  display: none;
 }
 
 .nav {
