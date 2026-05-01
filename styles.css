@@ -504,12 +504,12 @@ a {
   height: 520px;
   width: auto;
   object-fit: cover;
-  opacity: 0.96;
-  filter: contrast(1.04) saturate(1.01);
+  opacity: 1;
+  filter: brightness(1.22) contrast(1.03) saturate(1.03);
   mix-blend-mode: normal;
   transform: translateX(16px);
-  mask-image: radial-gradient(closest-side at 56% 40%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  -webkit-mask-image: radial-gradient(closest-side at 56% 40%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: radial-gradient(closest-side at 58% 42%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(closest-side at 58% 42%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
 }
 
 .kicker {
@@ -1708,6 +1708,7 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
     height: 440px;
     opacity: 0.84;
     transform: translateX(18px);
+    filter: brightness(1.18) contrast(1.03) saturate(1.03);
   }
   .hero__copy {
     height: auto;
@@ -1811,6 +1812,7 @@ html[data-theme="preto"] .swatch[data-theme="preto"] {
     height: 360px;
     opacity: 0.72;
     transform: translateX(20px);
+    filter: brightness(1.14) contrast(1.03) saturate(1.03);
   }
   .avatar {
     width: 72px;
